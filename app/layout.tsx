@@ -5,6 +5,7 @@ import PageHeader from "@/components/PageHeader";
 import FooterMain from "@/components/FooterMain";
 
 const inter = Inter({ subsets: ["latin"] });
+export const runtime = "edge";
 
 export const metadata: Metadata = {
   title: "Twitter Video Downloader",

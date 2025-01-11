@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { XIcon } from "./icons";
 
 export default function FooterMain() {
@@ -6,7 +5,7 @@ export default function FooterMain() {
     <footer className="border-t dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4 py-6 flex justify-between items-center ">
         <div className="text-sm text-gray-600 dark:text-gray-400">
-          © {new Date().getFullYear()} XVideoDownloader. All rights reserved.
+          © {new Date().getFullYear()} XDown. All rights reserved.
         </div>
         {/* X: tommy */}
         <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -15,7 +14,7 @@ export default function FooterMain() {
             className="flex items-center space-x-1"
           >
             <XIcon />
-            <span>@xvideo</span>
+            <span>@xdown</span>
           </a>
         </div>
       </div>

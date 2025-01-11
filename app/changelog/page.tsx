@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 // Define types for changelog entries
 type ChangelogEntry = {
   version: string;

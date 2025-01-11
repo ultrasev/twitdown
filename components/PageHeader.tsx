@@ -9,7 +9,7 @@ export default function PageHeader() {
           <Link href="/" className="flex items-center space-x-2">
             <XIcon />
             <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              XVideoDownloader
+              XDown
             </span>
           </Link>
 

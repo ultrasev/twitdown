@@ -35,13 +35,13 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
       <div className="mt-8 max-w-7xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
         <div className="grid md:grid-cols-2 gap-6">
           {/* Video Preview Section */}
-          <div className="relative aspect-video md:aspect-square w-full">
+          <div className="relative aspect-video md:aspect-square w-[80%] mx-auto">
             <Image
               src={data.thumbnail}
               alt="Video thumbnail"
               fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover rounded-2xl"
+              sizes="(max-width: 640px) 64vw, 32vw"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -96,7 +96,7 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
 function DownloadIcon() {
   return (
     <svg
-      className="w-5 h-5"
+      className="w-9 h-9"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -114,7 +114,7 @@ function DownloadIcon() {
 function ArrowIcon() {
   return (
     <svg
-      className="w-4 h-4 opacity-70 group-hover:translate-x-0.5 transition-transform"
+      className="w-5 h-5 opacity-70 group-hover:translate-x-1 transition-transform"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"

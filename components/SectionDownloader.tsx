@@ -4,7 +4,7 @@ import DownloaderForm from "./DownloaderForm";
 export default function SectionDownloader() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] px-4">
-      <div className="w-full max-w-3xl space-y-6 text-center">
+      <div className="w-full mx-auto space-y-6 text-center">
         <div className="inline-flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
           <HeartIcon />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">

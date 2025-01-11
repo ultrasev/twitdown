@@ -51,34 +51,36 @@ export default function DownloaderForm() {
   }
 
   return (
-    <div className="mt-8 w-full">
-      <form onSubmit={handleSubmit} className="relative">
-        <input
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="Paste Twitter video URL here..."
-          className="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          disabled={isLoading}
-        />
-        <button
-          type="submit"
-          disabled={isLoading || !url}
-          className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
-        >
-          {isLoading ? (
-            <>
-              <ClipboardIcon />
-              <span>Processing...</span>
-            </>
-          ) : (
-            <>
-              <DownloadIcon />
-              <span>Download</span>
-            </>
-          )}
-        </button>
-      </form>
+    <div className="mt-8 mx-auto text-center">
+      <div className="max-w-3xl mx-auto">
+        <form onSubmit={handleSubmit} className="relative">
+          <input
+            type="text"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="Paste Twitter video URL here..."
+            className="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            disabled={isLoading}
+          />
+          <button
+            type="submit"
+            disabled={isLoading || !url}
+            className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+          >
+            {isLoading ? (
+              <>
+                <ClipboardIcon />
+                <span>Processing...</span>
+              </>
+            ) : (
+              <>
+                <DownloadIcon />
+                <span>Download</span>
+              </>
+            )}
+          </button>
+        </form>
+      </div>
 
       {error && <p className="text-red-500 mt-2">{error}</p>}
 

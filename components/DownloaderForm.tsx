@@ -52,32 +52,34 @@ export default function DownloaderForm() {
 
   return (
     <div className="mt-8 mx-auto text-center">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl mx-auto p-8 rounded-3xl bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50 shadow-xl">
         <form onSubmit={handleSubmit} className="relative">
-          <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="Paste Twitter video URL here..."
-            className="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            disabled={isLoading}
-          />
+          <div className="relative">
+            <input
+              type="text"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              placeholder="Paste Twitter/X video URL here"
+              className="w-full px-4 py-3 rounded bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+              disabled={isLoading}
+            />
+            <button
+              type="button"
+              onClick={() => navigator.clipboard.readText().then(text => setUrl(text))}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+              disabled={isLoading}
+            >
+              <ClipboardIcon />
+            </button>
+          </div>
+
           <button
             type="submit"
             disabled={isLoading || !url}
-            className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+            className="mt-4 w-full py-3 rounded-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-white font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center space-x-2"
           >
-            {isLoading ? (
-              <>
-                <ClipboardIcon />
-                <span>Processing...</span>
-              </>
-            ) : (
-              <>
-                <DownloadIcon />
-                <span>Download</span>
-              </>
-            )}
+            <DownloadIcon />
+            <span>{isLoading ? 'Processing...' : 'Download'}</span>
           </button>
         </form>
       </div>

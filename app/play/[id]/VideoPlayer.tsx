@@ -45,7 +45,7 @@ export default function VideoPlayer({ video }: { video: Video }) {
         controls
         data-poster={video.posterUrl}
       >
-        <source src={`/api/videos/stream?id=${video.id}`} type="video/mp4" />
+        <source src={`/api/videos/${video.id}/stream`} type="video/mp4" />
       </video>
     </div>
   );

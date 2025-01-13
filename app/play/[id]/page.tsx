@@ -3,9 +3,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import VideoPlayer from "./VideoPlayer";
 
-export default async function PlayPage({ params }: { params: { id: string } }) {
-  const par = await params;
-  const videoId = par.id;
+type Params = Promise<{ videoId: string }>;
+
+export default async function PlayPage({ params }: { params: Params }) {
+  const { videoId } = await params;
   const video = videos.find((v) => v.id === videoId);
 
   if (!video) {

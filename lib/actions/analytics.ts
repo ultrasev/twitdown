@@ -5,9 +5,7 @@ export async function getAnalytics() {
   const API_URL =
     process.env.NODE_ENV === "production" ? PROD_API_URL : DEV_API_URL;
   const res = await fetch(API_URL, {
-    next: {
-      revalidate: 60, // Revalidate every 60 seconds
-    },
+    cache: 'no-store',  // Disable caching to always fetch fresh data
   });
 
   if (!res.ok) {

@@ -11,7 +11,7 @@ export default async function PlayPage(props: { params: Params }) {
   const video = videos.find((v) => v.id === videoId);
 
   if (!video) {
-    return <div>{videoId}</div>;
+    notFound();
   }
 
   return (

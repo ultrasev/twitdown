@@ -4,13 +4,32 @@ import SectionDownloader from "@/components/SectionDownloader";
 // Define metadata for better SEO
 export const metadata: Metadata = {
   title: "Twitter Video Downloader - Download Twitter/X Videos in HD",
-  description: "Free online tool to download Twitter/X videos in HD quality. No registration required, works on all devices.",
-  keywords: "twitter video downloader, x video downloader, twitter download, social media downloader",
+  description:
+    "Free online tool to download Twitter/X videos in HD quality. No registration required, works on all devices.",
+  keywords:
+    "twitter video downloader, x video downloader, twitter download, social media downloader",
   openGraph: {
     title: "Twitter Video Downloader - Download Twitter/X Videos in HD",
     description: "Free online tool to download Twitter/X videos in HD quality",
     type: "website",
     url: "https://twitdown.com",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Twitter Video Downloader",
+      },
+    ],
+    siteName: "TwitDown",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@twitdown",
+    creator: "@twitdown",
+    images: ["/og-image.png"],
+    title: "Twitter Video Downloader - Download Twitter/X Videos in HD",
+    description: "Free online tool to download Twitter/X videos in HD quality",
   },
 };
 

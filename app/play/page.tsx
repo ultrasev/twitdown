@@ -22,8 +22,15 @@ export default function Home() {
                   className="object-cover"
                   priority={false}
                 />
-                <div className="absolute top-2 right-2 bg-yellow-400 text-black px-2 py-1 rounded-full text-sm font-bold z-10">
-                  {video.rating}
+                <div className="absolute top-2 right-2 flex gap-2">
+                  <span className="bg-yellow-400 text-black px-2 py-1 rounded-full text-sm font-bold">
+                    {video.rating}
+                  </span>
+                  {video.rating && (
+                    <span className="bg-green-500 text-white px-2 py-1 rounded-full text-sm font-bold">
+                      豆瓣 {video.rating}
+                    </span>
+                  )}
                 </div>
               </div>
 

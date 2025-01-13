@@ -7,7 +7,7 @@ async function AnalyticsContent() {
   const videoArray = Array.isArray(videos) ? videos : [];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 min-h-screen">
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[

@@ -10,7 +10,7 @@ const jsonLd = {
   offers: {
     "@type": "Offer",
     price: "0",
-    priceCurrency: "USD"
+    priceCurrency: "USD",
   },
   description: "Free online tool to download Twitter/X videos in HD quality",
   browserRequirements: "Requires JavaScript",
@@ -18,8 +18,8 @@ const jsonLd = {
   url: "https://twitdown.com",
   author: {
     "@type": "Organization",
-    name: "TwitDown"
-  }
+    name: "TwitDown",
+  },
 };
 
 export default function Home() {

@@ -13,7 +13,7 @@ export default function SectionDownloader() {
         </div>
 
         <h1 className="text-5xl sm:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-          Twitter Video Downloader
+          X/Twitter Video Downloader
         </h1>
 
         <p className="text-xl text-gray-600 dark:text-gray-400">

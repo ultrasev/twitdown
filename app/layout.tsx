@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const runtime = "edge";
 
 export const metadata: Metadata = {
-  title: "Twitter Video Downloader",
+  title: "X/Twitter Video Downloader",
   description: "Download Twitter videos easily",
 };
 

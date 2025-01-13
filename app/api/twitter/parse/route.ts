@@ -80,6 +80,7 @@ export async function POST(request: Request) {
       text: data.text,
       resolutions: JSON.stringify(data.resolutions),
       viewCount: 1,
+      lastAccessedAt: new Date(),
     });
 
     return NextResponse.json(data);

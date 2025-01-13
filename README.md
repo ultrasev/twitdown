@@ -21,9 +21,8 @@ A high-performance Twitter video downloader built with Next.js 14, featuring ser
 - **Runtime:** Edge Runtime
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
-- **Database:** MongoDB with Mongoose
+- **Database:** PostgreSQL
 - **Caching:** Custom implementation
-- **Analytics:** Umami (Privacy-focused)
 
 ### Prerequisites
 

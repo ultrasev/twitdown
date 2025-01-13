@@ -11,23 +11,25 @@ export const runtime = "edge";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "X/Twitter Video Downloader - Download Twitter Videos Free",
-  "description": "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
-  "applicationCategory": "DownloadApplication",
-  "operatingSystem": "Any",
-  "offers": {
+  name: "X/Twitter Video Downloader - Download Twitter Videos Free",
+  description:
+    "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
+  applicationCategory: "DownloadApplication",
+  operatingSystem: "Any",
+  offers: {
     "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
+    price: "0",
+    priceCurrency: "USD",
+  },
 };
 
 export const metadata: Metadata = {
   title: {
-    default: "X/Twitter Video Downloader - Download Twitter Videos Free",
-    template: "%s | Twitter Video Downloader"
+    default: "TwitDown - Download Twitter Videos Free",
+    template: "%s | Twitter Video Downloader",
   },
-  description: "Download Twitter/X videos in HD quality for free. No registration required. Support multiple video formats and resolutions. Fast and easy to use.",
+  description:
+    "Download Twitter/X videos in HD quality for free. No registration required. Support multiple video formats and resolutions. Fast and easy to use.",
   keywords: [
     "twitter video downloader",
     "x video downloader",
@@ -36,12 +38,13 @@ export const metadata: Metadata = {
     "x.com video downloader",
     "twitter mp4 download",
     "download x videos",
-    "twitter video saver"
+    "twitter video saver",
   ],
-  authors: [{ name: "Your Name" }],
+  authors: [{ name: "@twitdown" }],
   openGraph: {
     title: "X/Twitter Video Downloader - Download Twitter Videos Free",
-    description: "Download Twitter/X videos in HD quality for free. No registration required.",
+    description:
+      "Download Twitter/X videos in HD quality for free. No registration required.",
     type: "website",
     locale: "en_US",
     url: "https://twitdown.com",
@@ -49,10 +52,11 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "X/Twitter Video Downloader - Download Twitter Videos Free",
-    description: "Download Twitter/X videos in HD quality for free. No registration required.",
+    description:
+      "Download Twitter/X videos in HD quality for free. No registration required.",
   },
   alternates: {
-    canonical: "https://twitdown.com"
+    canonical: "https://twitdown.com",
   },
   robots: {
     index: true,
@@ -81,7 +85,11 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-      <script defer src="https://umamidata.vercel.app/script.js" data-website-id="1f38e5c7-1b48-43a9-a35c-c677bd671a9c"></script>
+        <script
+          defer
+          src="https://umamidata.vercel.app/script.js"
+          data-website-id="1f38e5c7-1b48-43a9-a35c-c677bd671a9c"
+        ></script>
         <div className="min-h-screen flex flex-col">
           <PageHeader />
           {children}

@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+    <img src="./public/icons/apple-icon-180x180.png" alt="TwitDown Logo" width="100" height="100">
+</div>
 
-## Getting Started
+# TwitDown - Twitter Video Downloader
 
-First, run the development server:
+A high-performance Twitter video downloader built with Next.js 14, featuring server-side rendering, edge runtime, and optimal caching strategies.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Key Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- ⚡️ Lightning-fast video downloads with edge runtime
+- 🎯 Multiple video quality options
+- 💾 Smart caching system for frequently accessed videos
+- 📱 Responsive design for all devices
+- 🌙 Dark mode support
+- 🔒 No login required, privacy-focused
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework:** Next.js 14 (App Router)
+- **Runtime:** Edge Runtime
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Database:** MongoDB with Mongoose
+- **Caching:** Custom implementation
+- **Analytics:** Umami (Privacy-focused)
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js 18+
+- pnpm (recommended) or npm
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Try it out
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Try it out: https://twitdown.com/

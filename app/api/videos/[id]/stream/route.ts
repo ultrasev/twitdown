@@ -5,8 +5,8 @@ export async function GET(
   request: Request,
   { params }: { params: { id: string } }
 ) {
-  const par = await params;
-  const video = videos.find((v) => v.id === par.id);
+  const { id } = await params;
+  const video = videos.find((v) => v.id === id);
   if (!video) {
     return new NextResponse("Video not found", { status: 404 });
   }

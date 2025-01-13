@@ -22,13 +22,13 @@ export default function FooterMain() {
               Privacy
             </a>
           </div>
-          <a
+          {/* <a
             href="https://twitter.com/tommy_dev"
             className="flex items-center space-x-1 mt-2 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
           >
             <TwitterIcon />
             <span className={`${young_serif.className}`}>@twitdown</span>
-          </a>
+          </a> */}
         </div>
       </div>
     </footer>

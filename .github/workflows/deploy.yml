@@ -15,6 +15,6 @@ jobs:
 
       - name: Deploy to Vercel
         env:
-          VERCEL_DEPLOY_HOOK: https://api.vercel.com/v1/integrations/deploy/prj_N4dzbBy2i54WPPJywbcz9vVLl5jj/EdO3FEFhen
+          VERCEL_DEPLOY_HOOK: ${{ secrets.TWITDOWN_HOOK }}
         run: |
           curl -X POST $VERCEL_DEPLOY_HOOK

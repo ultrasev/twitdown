@@ -1,3 +1,5 @@
+PROJECT_NAME=twitdown
+
 install:
 	pnpm install
 
@@ -26,3 +28,8 @@ start:
 
 deploy:
 	vercel deploy --prod
+
+env:
+	@cat .env.local | base64 | tr -d '\n' | gh secret set  ${PROJECT_NAME}_ENV
+	@echo "Environment variable updated"
+	@gh secret list

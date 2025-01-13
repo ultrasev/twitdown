@@ -12,4 +12,4 @@ const pool = new Pool({
 });
 
 export const db = drizzle(pool);
-export { sql };  // Export sql for raw queries
+export { sql }; // Export sql for raw queries

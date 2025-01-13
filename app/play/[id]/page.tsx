@@ -3,14 +3,15 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import VideoPlayer from "./VideoPlayer";
 
-type Params = Promise<{ videoId: string }>;
+type Params = Promise<{ id: string }>;
 
-export default async function PlayPage({ params }: { params: Params }) {
-  const { videoId } = await params;
+export default async function PlayPage(props: { params: Params }) {
+  const params = await props.params;
+  const videoId = params.id;
   const video = videos.find((v) => v.id === videoId);
 
   if (!video) {
-    notFound();
+    return <div>{videoId}</div>;
   }
 
   return (

@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description: "Download Twitter/X videos in HD quality for free. No registration required.",
     type: "website",
     locale: "en_US",
-    url: "https://your-domain.com",
+    url: "https://twitdown.com",
   },
   twitter: {
     card: "summary_large_image",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     description: "Download Twitter/X videos in HD quality for free. No registration required.",
   },
   alternates: {
-    canonical: "https://your-domain.com"
+    canonical: "https://twitdown.com"
   },
   robots: {
     index: true,

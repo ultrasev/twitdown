@@ -60,12 +60,14 @@ export default function DownloaderForm() {
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="Paste Twitter/X video URL here"
-              className="w-full px-4 py-3 rounded bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+              className="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
               disabled={isLoading}
             />
             <button
               type="button"
-              onClick={() => navigator.clipboard.readText().then(text => setUrl(text))}
+              onClick={() =>
+                navigator.clipboard.readText().then((text) => setUrl(text))
+              }
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
               disabled={isLoading}
             >
@@ -79,7 +81,7 @@ export default function DownloaderForm() {
             className="mt-4 w-full py-3 rounded-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-white font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center space-x-2"
           >
             <DownloadIcon />
-            <span>{isLoading ? 'Processing...' : 'Download'}</span>
+            <span>{isLoading ? "Processing..." : "Download"}</span>
           </button>
         </form>
       </div>

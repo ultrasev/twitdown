@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { videos } from "@/app/data/videos";
-export const runtime = "edge";
+
 type Params = Promise<{ id: string }>;
 
 export async function GET(

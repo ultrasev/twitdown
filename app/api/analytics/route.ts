@@ -2,7 +2,6 @@ import { db } from "@/lib/db";
 import { twitterCache } from "@/lib/db/schema";
 import { desc } from "drizzle-orm";
 import { NextResponse } from "next/server";
-export const runtime = 'edge';
 
 export async function GET() {
   try {

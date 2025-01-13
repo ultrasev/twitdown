@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { db, sql } from "@/lib/db";
 import { twitterCache } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
-export const runtime = 'edge';
+
 // Constants for API configuration
 const TWITDOWN_API = process.env.TWITTER_DOWN_API;
 const API_ENDPOINT = `${TWITDOWN_API}/api/parse`;

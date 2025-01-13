@@ -4,8 +4,8 @@ import Link from "next/link";
 import VideoPlayer from "./VideoPlayer";
 
 export default async function PlayPage({ params }: { params: { id: string } }) {
-  // Wait for params to be available
-  const videoId = await params.id;
+  const par = await params;
+  const videoId = par.id;
   const video = videos.find((v) => v.id === videoId);
 
   if (!video) {

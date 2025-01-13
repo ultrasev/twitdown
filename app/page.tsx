@@ -17,8 +17,8 @@ const jsonLd = {
   url: "https://twitdown.com",
   author: {
     "@type": "Organization",
-    name: "TwitDown"
-  }
+    name: "TwitDown",
+  },
 };
 
 export default function Home() {
@@ -31,58 +31,68 @@ export default function Home() {
 
       <SectionDownloader />
 
-      {/* Main content sections */}
-      <div className="max-w-3xl mx-auto mt-20 prose dark:prose-invert max-w-none space-y-12">
-        <section>
-          <h2 className="text-3xl font-bold mb-6">
+      {/* Main content with adjusted width */}
+      <div className="max-w-3xl mx-auto mt-20 space-y-16">
+        {/* How-to Section */}
+        <section className="rounded-lg bg-gray-50 dark:bg-gray-800/50 p-6">
+          <h2 className="text-2xl font-bold mb-6">
             How to Download Twitter Videos
           </h2>
-          <ol className="list-decimal pl-6">
-            <li>Copy the Twitter/X video URL you want to download</li>
-            <li>Paste the URL in the input box above</li>
-            <li>Click the Download button</li>
-            <li>Choose your preferred video quality and format</li>
-            <li>Click to download your video</li>
+          <ol className="space-y-4">
+            {[
+              "Copy the Twitter/X video URL you want to download",
+              "Paste the URL in the input box above",
+              "Click the Download button",
+              "Choose your preferred video quality",
+              "Download your video",
+            ].map((step, index) => (
+              <li key={index} className="flex gap-3">
+                <span className="font-semibold">{index + 1}.</span>
+                <span>{step}</span>
+              </li>
+            ))}
           </ol>
         </section>
 
-        <section>
-          <h2 className="text-3xl font-bold mb-6">
-            Features of Our Twitter Video Downloader
-          </h2>
-          <ul className="list-disc pl-6">
-            <li>Free to use - no registration required</li>
-            <li>Support for high-quality video downloads</li>
-            <li>Multiple format options available</li>
-            <li>Fast and secure downloads</li>
-            <li>Works with all Twitter/X videos</li>
-            <li>Mobile-friendly interface</li>
-          </ul>
+        {/* Features Section */}
+        <section className="rounded-lg bg-gray-50 dark:bg-gray-800/50 p-6">
+          <h2 className="text-2xl font-bold mb-6">Features</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              "Free to use - no registration required",
+              "High-quality video downloads",
+              "Mobile-friendly interface",
+              "Fast and secure downloads",
+              "Works with all Twitter/X videos",
+              "Multiple format options",
+            ].map((feature, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <span className="text-blue-500">•</span>
+                <span>{feature}</span>
+              </div>
+            ))}
+          </div>
         </section>
 
-        {/* New FAQ section */}
-        <section>
-          <h2 className="text-3xl font-bold mb-6">
-            Frequently Asked Questions
-          </h2>
+        {/* FAQ Section */}
+        <section className="rounded-lg bg-gray-50 dark:bg-gray-800/50 p-6">
+          <h2 className="text-2xl font-bold mb-6">FAQ</h2>
           <div className="space-y-6">
-            <div>
-              <h3 className="text-xl font-semibold mb-2">
-                Can I download Twitter videos on mobile devices?
-              </h3>
-              <p>
-                Yes! Our downloader works on all devices including smartphones
-                and tablets. The process is the same - just paste the video URL
-                and download.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-2">Is it free to use?</h3>
-              <p>
-                Absolutely! Our service is completely free with no hidden
-                charges or registration required.
-              </p>
-            </div>
+            {[
+              {
+                q: "Can I download Twitter videos on mobile devices?",
+                a: "Yes! Our downloader works on all devices including smartphones and tablets.",
+              },
+              {
+                q: "Is it free to use?",
+                a: "Absolutely! Our service is completely free with no hidden charges or registration required.",
+              },
+            ].map((faq, index) => (
+              <div key={index}>
+                <h3 className="font-semibold mb-2">{faq.q}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{faq.a}</p>
+              </div>
+            ))}
           </div>
         </section>
       </div>

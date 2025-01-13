@@ -9,46 +9,28 @@ export async function GET(
 ) {
   const { id } = await params;
   const video = videos.find((v) => v.id === id);
-
   if (!video) {
-    return new NextResponse(JSON.stringify({ error: "Video not found" }), {
-      status: 404,
-      headers: { "Content-Type": "application/json" },
-    });
+    return new NextResponse("Video not found", { status: 404 });
   }
 
-  const workerUrl = `https://stream.tpz.workers.dev/?video=${encodeURIComponent(
-    video.sourceUrl
-  )}`;
   const range = request.headers.get("range");
 
   try {
-    const response = await fetch(workerUrl, {
+    const response = await fetch(video.sourceUrl, {
       headers: range ? { Range: range } : {},
-      // Add next: { revalidate: 14400 } if you want to cache at Next.js level
     });
 
-    if (!response.ok && response.status !== 206) {
-      const errorData = await response
-        .json()
-        .catch(() => ({ error: "Unknown error" }));
-      console.error("Worker error:", {
-        status: response.status,
-        error: errorData,
-      });
-      return NextResponse.json(errorData, { status: response.status });
-    }
+    const headers = new Headers();
+    response.headers.forEach((value, key) => {
+      headers.set(key, value);
+    });
 
-    // Let Cloudflare Worker handle the caching
     return new NextResponse(response.body, {
       status: response.status,
-      headers: response.headers,
+      headers,
     });
   } catch (error) {
-    console.error("Stream error:", error);
-    return NextResponse.json(
-      { error: "Error streaming video" },
-      { status: 500 }
-    );
+    console.error("Error streaming video:", error);
+    return new NextResponse("Error loading video", { status: 500 });
   }
 }

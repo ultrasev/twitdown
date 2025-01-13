@@ -1,5 +1,5 @@
-import { young_serif } from "@/components/Font";
-import { TwitterIcon } from "@/components/icons";
+// import { young_serif } from "@/components/Font";
+// import { TwitterIcon } from "@/components/icons";
 
 export default function FooterMain() {
   return (

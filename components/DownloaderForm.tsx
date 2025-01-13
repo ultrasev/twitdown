@@ -15,6 +15,12 @@ interface VideoData {
   statusId: string;
 }
 
+function isValidTwitterUrl(url: string): boolean {
+  const twitterUrlPattern =
+    /^https?:\/\/((?:x|twitter)\.com)\/[a-zA-Z0-9_]+\/status\/\d+/;
+  return twitterUrlPattern.test(url);
+}
+
 export default function DownloaderForm() {
   const [url, setUrl] = useState("");
   const [videoData, setVideoData] = useState<VideoData | null>(null);
@@ -23,6 +29,12 @@ export default function DownloaderForm() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    if (!isValidTwitterUrl(url)) {
+      setError("Please enter a valid Twitter/X video URL");
+      return;
+    }
+
     setIsLoading(true);
     setError("");
     setVideoData(null);

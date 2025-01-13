@@ -1,14 +1,15 @@
 import { NextResponse } from "next/server";
 
 // Constants for API configuration
-const API_ENDPOINT = "https://www.xxxxxxxx/api/parse";
+const TWITTER_DOWN_API = process.env.TWITTER_DOWN_API;
+const API_ENDPOINT = `${TWITTER_DOWN_API}/api/parse`;
 const HEADERS = {
   "Content-Type": "application/json",
   "User-Agent":
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
   Accept: "*/*",
-  Origin: "https://www.xxxxxxxx",
-  Referer: "https://www.xxxxxxxx/",
+  Origin: TWITTER_DOWN_API,
+  Referer: TWITTER_DOWN_API,
 };
 
 // Handle POST requests

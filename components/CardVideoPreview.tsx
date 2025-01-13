@@ -35,7 +35,7 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
       <div className="mt-8 max-w-7xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
         <div className="grid md:grid-cols-2 gap-6">
           {/* Video Preview Section */}
-          <div className="relative aspect-video md:aspect-square w-[80%] mx-auto">
+          <div className="mt-6 relative aspect-video md:aspect-square w-[80%] mx-auto">
             <Image
               src={data.thumbnail}
               alt="Video thumbnail"
@@ -44,9 +44,10 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
               sizes="(max-width: 640px) 64vw, 32vw"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <h3 className="absolute bottom-4 left-4 right-4 text-white text-lg font-medium z-10">
-              {data.text}
+              {data.text.length > 16
+                ? data.text.slice(0, 16) + "..."
+                : data.text}
             </h3>
           </div>
 

@@ -14,6 +14,7 @@ export async function GET() {
         downloadCount: twitterCache.downloadCount,
         viewCount: twitterCache.viewCount,
         lastAccessedAt: twitterCache.lastAccessedAt,
+        createdAt: twitterCache.createdAt,
       })
       .from(twitterCache)
       .orderBy(desc(twitterCache.viewCount))

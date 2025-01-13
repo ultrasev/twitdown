@@ -24,14 +24,6 @@ async function AnalyticsContent() {
             ),
             icon: "👀",
           },
-          {
-            title: "Total Downloads",
-            value: videoArray.reduce(
-              (acc, vid) => acc + (vid.downloadCount || 0),
-              0
-            ),
-            icon: "⬇️",
-          },
         ].map((stat) => (
           <div
             key={stat.title}
@@ -65,10 +57,7 @@ async function AnalyticsContent() {
                   Views
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  Downloads
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                  Last Accessed
+                  Created At
                 </th>
               </tr>
             </thead>
@@ -84,7 +73,7 @@ async function AnalyticsContent() {
                         {video.thumbnail && (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img
-                            className="rounded-md object-cover w-10 h-10"
+                            className="rounded-full object-cover w-10 h-10"
                             src={video.thumbnail}
                             alt=""
                           />
@@ -92,9 +81,14 @@ async function AnalyticsContent() {
                       </div>
                       <div>
                         <div className="font-medium">@{video.username}</div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400 truncate max-w-md">
-                          {video.text}
-                        </div>
+                        <a
+                          href={`https://twitter.com/${video.username}/status/${video.statusId}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-blue-600 dark:text-blue-400 hover:underline truncate max-w-md"
+                        >
+                          {video.text?.slice(0, 32)}
+                        </a>
                       </div>
                     </div>
                   </td>
@@ -104,8 +98,8 @@ async function AnalyticsContent() {
                     </span>
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
-                    {video.lastAccessedAt
-                      ? new Date(video.lastAccessedAt).toLocaleDateString()
+                    {video.createdAt
+                      ? new Date(video.createdAt).toLocaleDateString()
                       : "N/A"}
                   </td>
                 </tr>

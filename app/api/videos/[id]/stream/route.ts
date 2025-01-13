@@ -1,11 +1,11 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { videos } from "@/app/data/videos";
 
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: { id: string } }
 ) {
-  const { id } = await params;
+  const { id } = await context.params;
   const video = videos.find((v) => v.id === id);
   if (!video) {
     return new NextResponse("Video not found", { status: 404 });

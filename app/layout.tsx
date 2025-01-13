@@ -81,6 +81,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+      <script defer src="https://umamidata.vercel.app/script.js" data-website-id="1f38e5c7-1b48-43a9-a35c-c677bd671a9c"></script>
         <div className="min-h-screen flex flex-col">
           <PageHeader />
           {children}

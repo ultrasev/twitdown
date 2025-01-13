@@ -1,61 +1,45 @@
-"use client";
+import Link from "next/link";
+import { videos } from "@/app/data/videos";
+import Image from "next/image";
 
-import { useEffect, useRef } from "react";
-import Plyr from "plyr";
-import "plyr/dist/plyr.css";
-
-// Main component for video player
-export default function VideoPlayer() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const playerRef = useRef<Plyr | undefined>(undefined);
-
-  useEffect(() => {
-    // Initialize Plyr when component mounts
-    if (videoRef.current && !playerRef.current) {
-      playerRef.current = new Plyr(videoRef.current, {
-        keyboard: {
-          focused: true,
-          global: true,
-        },
-        seekTime: 10,
-        controls: [
-          "play-large",
-          "play",
-          "progress",
-          "current-time",
-          "mute",
-          "volume",
-          "settings",
-          "fullscreen",
-        ],
-        settings: ["quality", "speed"],
-        speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
-      });
-    }
-
-    // Cleanup on unmount
-    return () => {
-      if (playerRef.current) {
-        playerRef.current.destroy();
-      }
-    };
-  }, []);
-
+export default function Home() {
   return (
-    <div className="max-w-[80vw] md:max-w-[70vw] lg:max-w-[60vw] mx-auto p-4 mt-8">
-      <div className="rounded-2xl overflow-hidden shadow-lg">
-        <video
-          ref={videoRef}
-          className="w-full aspect-video"
-          playsInline
-          controls
-          data-poster="/x.png"
-        >
-          <source
-            src="https://filedn.com/lCdtpv3siVybVynPcgXgnPm/%E7%9B%9F%E7%BA%A6.mp4"
-            type="video/mp4"
-          />
-        </video>
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {videos.map((video) => (
+          <Link
+            key={video.id}
+            href={`/play/${video.id}`}
+            className="block hover:scale-105 transition-transform"
+          >
+            <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+              <div className="aspect-video relative">
+                <Image
+                  src={video.posterUrl || "/x.jpg"}
+                  alt={video.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                  priority={false}
+                />
+                <div className="absolute top-2 right-2 bg-yellow-400 text-black px-2 py-1 rounded-full text-sm font-bold z-10">
+                  {video.rating}
+                </div>
+              </div>
+
+              {/* 视频信息 */}
+              <div className="p-4">
+                <h2 className="text-xl font-bold mb-2">{video.title}</h2>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
+                  {video.director} · {video.year} · {video.country}
+                </p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
+                  {video.description}
+                </p>
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

@@ -1,4 +1,18 @@
+import { Metadata } from "next";
 import SectionDownloader from "@/components/SectionDownloader";
+
+// Define metadata for better SEO
+export const metadata: Metadata = {
+  title: "Twitter Video Downloader - Download Twitter/X Videos in HD",
+  description: "Free online tool to download Twitter/X videos in HD quality. No registration required, works on all devices.",
+  keywords: "twitter video downloader, x video downloader, twitter download, social media downloader",
+  openGraph: {
+    title: "Twitter Video Downloader - Download Twitter/X Videos in HD",
+    description: "Free online tool to download Twitter/X videos in HD quality",
+    type: "website",
+    url: "https://twitdown.com",
+  },
+};
 
 // Add JSON-LD schema for better SEO
 const jsonLd = {

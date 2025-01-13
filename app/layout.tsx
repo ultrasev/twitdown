@@ -33,8 +33,6 @@ export const metadata: Metadata = {
   keywords: [
     "twitter video downloader",
     "x video downloader",
-    "download twitter videos",
-    "twitter video download",
     "x.com video downloader",
     "twitter mp4 download",
     "download x videos",

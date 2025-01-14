@@ -1,36 +1,5 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import SectionDownloader from "@/components/SectionDownloader";
-
-// Define metadata for better SEO
-export const metadata: Metadata = {
-  title: "Twitter Video Downloader - Download Twitter/X Videos in HD",
-  description: "Download Twitter/X videos in HD quality instantly. Free, no registration needed, works on all devices. Save and share your favorite Twitter videos hassle-free.",
-  keywords:
-    "twitter video downloader, x video downloader, twitter download, social media downloader",
-  openGraph: {
-    title: "Twitter Video Downloader - Download Twitter/X Videos in HD",
-    description: "Download Twitter/X videos in HD quality instantly. Free, no registration needed, works on all devices. Save and share your favorite Twitter videos hassle-free.",
-    type: "website",
-    url: "https://twitdown.com",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Twitter Video Downloader",
-      },
-    ],
-    siteName: "TwitDown",
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@twitdown",
-    creator: "@twitdown",
-    images: ["/og-image.png"],
-    title: "Twitter Video Downloader - Download Twitter/X Videos in HD",
-    description: "Download Twitter/X videos in HD quality instantly. Free, no registration needed, works on all devices. Save and share your favorite Twitter videos hassle-free.",
-  },
-};
 
 // Add JSON-LD schema for better SEO
 const jsonLd = {
@@ -52,6 +21,12 @@ const jsonLd = {
     "@type": "Organization",
     name: "TwitDown",
   },
+};
+
+export const metadata: Metadata = {
+  title: "TwitDown - Download Twitter Videos Free",
+  description:
+    "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
 };
 
 export default function Home() {

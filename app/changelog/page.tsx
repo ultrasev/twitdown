@@ -142,3 +142,8 @@ export default function PageChangelog() {
     </main>
   );
 }
+
+export const metadata = {
+  title: "Changelog - TwitDown",
+  description: "Track our progress and updates on TwitDown.",
+};

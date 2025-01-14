@@ -41,10 +41,13 @@ export default function DownloaderForm() {
     setVideoData(null);
 
     try {
-      const { data } = await http.post<VideoData>('/api/twitter/parse', { url });
+      const { data } = await http.post<VideoData>("/api/twitter/parse", {
+        url,
+      });
       setVideoData(data);
     } catch (err) {
       setError("Failed to fetch video. Please check the URL and try again.");
+      console.error(err);
     } finally {
       setIsLoading(false);
     }

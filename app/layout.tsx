@@ -24,12 +24,8 @@ const jsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: {
-    default: "TwitDown - Download Twitter Videos Free",
-    template: "%s | Twitter Video Downloader",
-  },
-  description:
-    "Download Twitter/X videos in HD quality for free. No registration required. Support multiple video formats and resolutions. Fast and easy to use.",
+  title: "TwitDown - Download Twitter Videos Free",
+  description: "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
   keywords: [
     "twitter video downloader",
     "x video downloader",
@@ -40,18 +36,24 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "@twitdown" }],
   openGraph: {
-    title: "X/Twitter Video Downloader - Download Twitter Videos Free",
-    description:
-      "Download Twitter/X videos in HD quality for free. No registration required.",
     type: "website",
-    locale: "en_US",
     url: "https://twitdown.com",
+    title: "TwitDown - Download Twitter Videos Free",
+    description: "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
+    images: [
+      {
+        url: "https://twitdown.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "TwitDown - Download Twitter Videos Free",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "X/Twitter Video Downloader - Download Twitter Videos Free",
-    description:
-      "Download Twitter/X videos in HD quality for free. No registration required.",
+    title: "TwitDown - Download Twitter Videos Free",
+    description: "Download Twitter/X videos in HD quality for free. No registration required.",
+    images: ["https://twitdown.com/og-image.png"],
   },
   alternates: {
     canonical: "https://twitdown.com",

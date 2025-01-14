@@ -4,7 +4,7 @@ import { berkshire } from "@/components/Font";
 
 export default function PageHeader() {
   return (
-    <header className="border-b dark:border-gray-800">
+    <header className="border-b">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center space-x-2">
@@ -17,7 +17,7 @@ export default function PageHeader() {
           <nav className="flex items-center gap-16">
             <Link
               href="/changelog"
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              className="text-gray-600 hover:text-gray-900"
             >
               <span className={`${berkshire.className}`}>Changelog</span>
             </Link>

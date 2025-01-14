@@ -18,18 +18,18 @@ export default function SectionDownloader() {
         </h1>
 
         <div className="flex flex-wrap justify-center gap-4 text-sm">
-          <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
+          <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full">
             ⚡ Lightning Fast
           </span>
-          <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full">
+          <span className="px-4 py-2 bg-purple-100 text-purple-700 rounded-full">
             🎥 HD Quality
           </span>
-          <span className="px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full">
+          <span className="px-4 py-2 bg-pink-100 text-pink-700 rounded-full">
             🔒 No Login Required
           </span>
         </div>
 
-        <p className="text-xl text-gray-600 dark:text-gray-400">
+        <p className="text-xl text-gray-600">
           The fastest way to save Twitter/X videos in HD quality - No
           registration needed!
         </p>

@@ -55,7 +55,7 @@ export default function DownloaderForm() {
 
   return (
     <div className="mt-8 mx-auto text-center">
-      <div className="max-w-3xl mx-auto p-8 rounded-3xl bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50 shadow-xl">
+      <div className="max-w-3xl mx-auto p-8 rounded-3xl bg-white/70 backdrop-blur-lg border border-gray-200/50 shadow-xl">
         <form onSubmit={handleSubmit} className="relative">
           <div className="relative">
             <input
@@ -63,7 +63,7 @@ export default function DownloaderForm() {
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="Paste Twitter/X video URL here"
-              className="w-full px-4 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
               disabled={isLoading}
             />
             <button
@@ -71,7 +71,7 @@ export default function DownloaderForm() {
               onClick={() =>
                 navigator.clipboard.readText().then((text) => setUrl(text))
               }
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
               disabled={isLoading}
             >
               <ClipboardIcon />

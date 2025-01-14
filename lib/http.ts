@@ -78,6 +78,9 @@ async function request<T>(
       status: response.status,
       headers: response.headers,
     };
+  } catch (err) {
+    console.error(err);
+    throw err;
   } finally {
     clearTimeout(timeoutId);
   }

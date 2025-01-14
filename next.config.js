@@ -3,17 +3,17 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'pbs.twimg.com',
-        pathname: '/ext_tw_video_thumb/**',
+        protocol: "https",
+        hostname: "pbs.twimg.com",
+        pathname: "/**",
       },
       {
-        protocol: 'https',
-        hostname: 'video.twimg.com',
-        pathname: '/ext_tw_video/**',
-      }
+        protocol: "https",
+        hostname: "video.twimg.com",
+        pathname: "/**",
+      },
     ],
   },
-}
+};
 
-module.exports = nextConfig
+export default nextConfig;

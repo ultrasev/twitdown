@@ -6,12 +6,18 @@ interface ContentSectionProps {
   faqs: { q: string; a: string }[];
 }
 
-export default function ContentSection({ howToSteps, features, faqs }: ContentSectionProps) {
+export default function ContentSection({
+  howToSteps,
+  features,
+  faqs,
+}: ContentSectionProps) {
   return (
     <div className="max-w-3xl mx-auto mt-20 space-y-16">
       {/* How-to Section */}
       <section className="rounded-lg bg-gray-50 dark:bg-gray-800/50 p-6">
-        <h2 className="text-2xl font-bold mb-6">How to Download Twitter Videos</h2>
+        <h2 className="text-2xl font-bold mb-6">
+          How to Download Twitter Videos
+        </h2>
         <ol className="space-y-4">
           {howToSteps.map((step, index) => (
             <li key={index} className="flex gap-3">

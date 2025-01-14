@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import CardVideoPreview from "./CardVideoPreview";
+import CardVideoPreview from "@/app/components/CardVideoPreview";
 
 interface VideoData {
   thumbnail: string;

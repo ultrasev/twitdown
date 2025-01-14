@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import DownloaderForm from "./DownloaderForm";
+import DownloaderForm from "@/app/components/DownloaderForm";
 
 export default function SectionDownloader() {
   return (

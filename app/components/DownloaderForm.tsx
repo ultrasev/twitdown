@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import CardVideoPreview from "@/app/components/CardVideoPreview";
+import { http } from "@/lib/http";
 
 interface VideoData {
   thumbnail: string;
@@ -40,21 +41,8 @@ export default function DownloaderForm() {
     setVideoData(null);
 
     try {
-      const response = await fetch("/api/twitter/parse", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ url }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch video data");
-      }
-
-      const data = await response.json();
+      const { data } = await http.post<VideoData>('/api/twitter/parse', { url });
       setVideoData(data);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setError("Failed to fetch video. Please check the URL and try again.");
     } finally {

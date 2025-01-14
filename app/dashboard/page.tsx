@@ -1,9 +1,9 @@
-import { getAnalytics } from "@/lib/actions/analytics";
+import { getAnalytics, Video } from "@/lib/actions/analytics";
 import { Suspense } from "react";
 import Loading from "./loading";
 
 async function AnalyticsContent() {
-  const { videos } = await getAnalytics();
+  const { videos }: { videos: Video[] } = await getAnalytics();
   const videoArray = Array.isArray(videos) ? videos : [];
 
   return (

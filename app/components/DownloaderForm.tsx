@@ -84,7 +84,18 @@ export default function DownloaderForm() {
             className="mt-4 w-full py-3 rounded-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-white font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center space-x-2"
           >
             <DownloadIcon />
-            <span>{isLoading ? "Processing..." : "Download"}</span>
+            <span>
+              {isLoading ? (
+                <span className="inline-flex items-center">
+                  Processing
+                  <span className="ml-1 animate-dot-1">.</span>
+                  <span className="animate-dot-2">.</span>
+                  <span className="animate-dot-3">.</span>
+                </span>
+              ) : (
+                "Download"
+              )}
+            </span>
           </button>
         </form>
       </div>

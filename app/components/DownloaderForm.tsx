@@ -89,7 +89,9 @@ export default function DownloaderForm() {
         </form>
       </div>
 
-      {error && <p className="text-red-500 mt-2">{error}</p>}
+      {error && (
+        <p className="text-red-500 mt-8 font-serif font-bold">{error}</p>
+      )}
 
       {videoData && <CardVideoPreview data={videoData} />}
     </div>

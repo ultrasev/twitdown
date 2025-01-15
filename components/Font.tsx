@@ -9,6 +9,7 @@ import {
   Aclonica,
   Courier_Prime,
   Young_Serif,
+  Cinzel_Decorative,
 } from "next/font/google";
 import { Noto_Serif_SC } from "next/font/google";
 import { Hachi_Maru_Pop } from "next/font/google";
@@ -103,4 +104,13 @@ export const space_grotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-space-grotesk",
+});
+
+
+// Cinzel Decorative
+export const cinzel_decorative = Cinzel_Decorative({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-cinzel-decorative",
+  display: "swap",
 });

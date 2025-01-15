@@ -18,7 +18,7 @@ export function XIcon() {
 export function TwitterIcon() {
   return (
     <svg
-      className="w-8 h-8"
+      className="w-10 h-10"
       viewBox="0 0 24 24"
       aria-hidden="true"
     >

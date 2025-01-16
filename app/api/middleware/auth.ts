@@ -17,7 +17,7 @@ interface JWTPayload {
 // JWT authentication middleware
 export const authMiddleware = async (c: Context, next: Next) => {
   if (c.req.method === "OPTIONS") return next();
-  logger.info(c.req.url);
+  logger.info(c.req.url, c.req.header("Authorization"));
 
   try {
     // First verify JWT token

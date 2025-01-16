@@ -1,6 +1,12 @@
 import { Context, Next } from "hono";
 import { jwt } from "hono/jwt";
 import { APP_NAME, ROLE } from "@/lib/http";
+import { Logger } from "tslog";
+
+const logger = new Logger({
+  name: "auth",
+});
+
 interface JWTPayload {
   app: string;
   role: string;
@@ -11,6 +17,7 @@ interface JWTPayload {
 // JWT authentication middleware
 export const authMiddleware = async (c: Context, next: Next) => {
   if (c.req.method === "OPTIONS") return next();
+  logger.info(c.req.url);
 
   try {
     // First verify JWT token
@@ -24,22 +31,22 @@ export const authMiddleware = async (c: Context, next: Next) => {
     });
 
     const payload = c.get("jwtPayload") as JWTPayload;
-    console.log("JWT Payload:", payload);
+    logger.info("JWT Payload:", payload);
 
     if (payload.app !== APP_NAME) {
-      console.log("Invalid app:", payload.app);
+      logger.error("Invalid app:", payload.app);
       return c.json({ error: "Invalid application" }, 403);
     }
 
     if (payload.role !== ROLE) {
-      console.log("Invalid role:", payload.role);
+      logger.error("Invalid role:", payload.role);
       return c.json({ error: "Invalid role" }, 403);
     }
 
     // Only proceed if all validations pass
     return await next();
   } catch (error) {
-    console.error("Auth error:", error);
+    logger.error("Auth error:", error);
     return c.json({ error: "Authentication failed" }, 401);
   }
 };

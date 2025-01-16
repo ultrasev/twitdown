@@ -2,8 +2,8 @@
 import { jwtVerify, SignJWT } from "jose";
 
 const DEFAULT_TIMEOUT = 10000;
-const APP_NAME = "twitdown";
-const ROLE = "user";
+export const APP_NAME = "twitdown";
+export const ROLE = "user";
 
 interface RequestConfig extends RequestInit {
   timeout?: number;

@@ -1,5 +1,6 @@
 // HTTP client module with built-in JWT handling
 import { jwtVerify, SignJWT } from "jose";
+
 const DEFAULT_TIMEOUT = 10000;
 const APP_NAME = "twitdown";
 const ROLE = "user";

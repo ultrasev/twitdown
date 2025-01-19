@@ -18,9 +18,9 @@ export const metadata: Metadata = {
 
 function AboutPage() {
   return (
-    <article className="max-w-5xl mx-auto px-4 py-12 min-h-screen rounded-xl text-lg">
+    <article className="max-w-6xl mx-auto px-16 py-12 min-h-screen rounded-xl text-lg bg-gradient-to-b from-amber-50/50 to-transparent">
       <div className="prose max-w-none">
-        <h1 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+        <h1 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-amber-700 to-amber-950">
           About TwitDown
         </h1>
 

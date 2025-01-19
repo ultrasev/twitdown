@@ -3,7 +3,7 @@ import { berkshire } from "@/components/Font";
 
 export default function PageHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-amber-200/50 bg-white/80 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 w-full bg-gradient-to-b from-amber-50/50 to-transparent">
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center space-x-2">
@@ -25,7 +25,9 @@ export default function PageHeader() {
               href="/changelog"
               className="text-amber-800 hover:text-amber-950 transition-colors duration-200"
             >
-              <span className={`${berkshire.className} text-lg`}>Changelog</span>
+              <span className={`${berkshire.className} text-lg`}>
+                Changelog
+              </span>
             </Link>
           </nav>
         </div>

@@ -9,14 +9,6 @@
 }
 
 body {
-  /* Soft gradient background for traditional Chinese watercolor feel */
-  background: linear-gradient(
-    135deg,
-    rgb(253, 242, 248) 0%,    /* Soft pink */
-    rgb(243, 244, 246) 35%,   /* Light gray */
-    rgb(236, 246, 250) 100%   /* Light cyan */
-  );
-  color: rgb(var(--foreground-rgb));
   min-height: 100vh;
 }
 

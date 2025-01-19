@@ -1,165 +1,52 @@
 import { db, sql } from "@/lib/db";
 import { twitterCache, TwitterVideoData } from "@/lib/db/schema";
 import { eq, desc } from "drizzle-orm";
-
-// API configuration
-const TWITTER_CONFIG = {
-  API_URL: process.env.TWITTER_DOWN_API,
-  ENDPOINT: `${process.env.TWITTER_DOWN_API}/api/parse`,
-  HEADERS: {
-    "Content-Type": "application/json",
-    "User-Agent":
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
-    Accept: "*/*",
-    Origin: process.env.TWITTER_DOWN_API,
-    Referer: process.env.TWITTER_DOWN_API,
-  },
-} as const;
-
 // Modified interface to include priority
+const NEW_API_URL = process.env.NEW_API_URL;
+const NEW_API_KEY = process.env.NEW_API_KEY;
+
 interface TwitterParser {
   priority: number;
   parse(url: string): Promise<TwitterVideoData | null>;
 }
 
-// Base parser implementation
-abstract class BaseParser implements TwitterParser {
-  constructor(public priority: number) {}
-  public abstract parse(url: string): Promise<TwitterVideoData | null>;
-}
-
-// Primary API parser
-class PrimaryApiParser extends BaseParser {
-  constructor(priority: number) {
-    super(priority);
-  }
+// Single parser implementation using new API
+class TwitterVideoParser implements TwitterParser {
+  constructor(public priority: number = 1) {}
 
   async parse(url: string): Promise<TwitterVideoData | null> {
-    console.log("parsing with primary api parser");
-    const endpoint = TWITTER_CONFIG.ENDPOINT;
-
-    if (!endpoint) {
-      console.warn("Primary API endpoint not configured");
-      return null;
-    }
-
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: TWITTER_CONFIG.HEADERS as Record<string, string>,
-      body: JSON.stringify({ url }),
-    });
-
-    if (!response.ok) return null;
-    const data = await response.json();
-    return this.formatResponse(data, url);
-  }
-
-  private formatResponse(
-    data: TwitterVideoData,
-    url: string
-  ): TwitterVideoData {
-    return {
-      thumbnail: data.thumbnail,
-      resolutions: data.resolutions.map(
-        (r: { url: string; resolution: string; quality: string }) => ({
-          url: r.url,
-          resolution: r.resolution,
-          quality: r.quality || "default",
-        })
-      ),
-      text: data.text,
-      username: data.username,
-      statusId: TwitterService.extractStatusId(url) || "",
-    };
-  }
-}
-
-// Twitsave parser
-class TwitsaveParser extends BaseParser {
-  constructor(priority: number) {
-    super(priority);
-  }
-
-  async parse(url: string): Promise<TwitterVideoData | null> {
-    console.log("parsing with xxxxxxxx parser");
+    console.log("parsing with new API parser");
     try {
-      const infoResponse = await fetch(
-        `https://xxxxxxxx/info?url=${encodeURIComponent(url)}`,
+      const response = await fetch(
+        `${NEW_API_URL}?url=${encodeURIComponent(url)}`,
         {
           headers: {
-            "User-Agent":
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-            Accept: "text/html,application/json",
-            "Accept-Language": "en-US,en;q=0.9",
+            "x-api-key": NEW_API_KEY || "",
+            Accept: "application/json",
           },
         }
       );
-
-      if (!infoResponse.ok) return null;
-      const html = await infoResponse.text();
-
-      // Extract all download links and their resolutions
-      const downloadLinks = this.extractDownloadLinks(html);
-      if (downloadLinks.length === 0) return null;
-
-      // Extract other metadata
-      const usernameMatch = html.match(
-        /href="https:\/\/twitter\.com\/([^"]+)"/
-      );
-      const textMatch = html.match(/<p class="m-2">([^<]+)<\/p>/);
-      const thumbnailMatch = html.match(/poster="([^"]+)"/);
-
-      if (!usernameMatch) return null;
+      console.log(response);
+      if (!response.ok) return null;
+      const data = await response.json();
 
       return {
-        username: usernameMatch[1].split("/")[0],
-        text: textMatch ? textMatch[1].trim() : "",
-        thumbnail: thumbnailMatch ? thumbnailMatch[1] : "",
-        resolutions: downloadLinks,
+        thumbnail: data.thumbnail,
+        resolutions: data.resolutions.map(
+          (r: { url: string; resolution: string; quality: string }) => ({
+            url: r.url,
+            resolution: r.resolution,
+            quality: r.quality || "default",
+          })
+        ),
+        text: data.text,
+        username: data.username,
         statusId: TwitterService.extractStatusId(url) || "",
       };
     } catch (error) {
-      console.error("TwitsaveParser error:", error);
+      console.error("TwitterVideoParser error:", error);
       return null;
     }
-  }
-
-  private extractDownloadLinks(
-    html: string
-  ): Array<{ url: string; resolution: string; quality: string }> {
-    const links: Array<{ url: string; resolution: string; quality: string }> =
-      [];
-
-    // Find all download links
-    const linkRegex =
-      /href="(https:\/\/xxxxxxxx\.com\/download\?file=[^"]+)"[^>]*>[\s\S]*?Resolution:\s*(\d+x\d+)/g;
-    let match;
-
-    while ((match = linkRegex.exec(html)) !== null) {
-      const downloadUrl = match[1];
-      const resolution = match[2];
-
-      // Decode the actual video URL from the download link
-      const encodedUrl = new URL(downloadUrl).searchParams.get("file");
-      if (!encodedUrl) continue;
-
-      const decodedUrl = Buffer.from(encodedUrl, "base64").toString();
-
-      links.push({
-        url: decodedUrl,
-        resolution: resolution,
-        quality: this.getQualityFromResolution(resolution),
-      });
-    }
-
-    return links;
-  }
-
-  private getQualityFromResolution(resolution: string): string {
-    const [width] = resolution.split("x").map(Number);
-    if (width >= 1280) return "high";
-    if (width >= 720) return "medium";
-    return "low";
   }
 }
 
@@ -199,10 +86,9 @@ export const TwitterService = {
       .where(eq(twitterCache.statusId, statusId));
   },
 
-  // Modified to use priority-based parser chain
+  // Simplified parser chain setup
   setupParserChain(): TwitterParser[] {
-    const parsers = [new PrimaryApiParser(1), new TwitsaveParser(2)];
-    return parsers.sort((a, b) => a.priority - b.priority);
+    return [new TwitterVideoParser()];
   },
 
   // Modified fetchAndCache to use priority-based parsing

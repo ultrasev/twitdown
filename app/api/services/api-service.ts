@@ -27,10 +27,10 @@ export const ApiService = {
         return c.json({ error: "Invalid Twitter URL" }, 400);
       }
 
-      const cachedData = await TwitterService.getCachedData(statusId);
-      if (cachedData) {
-        return c.json(cachedData);
-      }
+      // const cachedData = await TwitterService.getCachedData(statusId);
+      // if (cachedData) {
+      //   return c.json(cachedData);
+      // }
 
       const data = await TwitterService.fetchAndCache(url, statusId);
       return c.json(data);

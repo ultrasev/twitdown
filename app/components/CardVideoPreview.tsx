@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
-import { Crimson_Pro, Inter } from 'next/font/google';
+import { Crimson_Pro, Inter } from "next/font/google";
 
 const crimsonPro = Crimson_Pro({
-  subsets: ['latin'],
-  weight: ['500', '600'],
-  style: ['normal']
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  style: ["normal"],
 });
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 interface VideoPreviewProps {
   data: {
@@ -40,28 +40,34 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
 
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8">
-      <div className="mt-8 max-w-4xl mx-auto overflow-hidden">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+      <div className="mt-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Video Preview Section */}
           <div className="relative aspect-video w-full">
             <Image
               src={data.thumbnail}
               alt="Video thumbnail"
               fill
-              className="object-cover rounded-sm border border-amber-200"
+              className="object-cover rounded-xl border border-amber-200"
               sizes="(max-width: 640px) 90vw, 45vw"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-amber-950/50 to-transparent" />
-            <h3 className={`${inter.className} absolute bottom-4 left-4 right-4 text-amber-50 text-lg`}>
-              {data.text.length > 24 ? data.text.slice(0, 24) + "..." : data.text}
+            <h3
+              className={`${inter.className} absolute bottom-4 left-4 right-4 text-amber-50 text-lg`}
+            >
+              {data.text.length > 24
+                ? data.text.slice(0, 24) + "..."
+                : data.text}
             </h3>
           </div>
 
           {/* Download Options Section */}
           <div className="flex flex-col justify-center w-full space-y-6">
             <div>
-              <h2 className={`${crimsonPro.className} text-2xl text-amber-950 mb-2`}>
+              <h2
+                className={`${crimsonPro.className} text-2xl text-amber-950 mb-2`}
+              >
                 Download Options
               </h2>
               <p className={`${inter.className} text-amber-800/90 text-sm`}>

@@ -17,13 +17,15 @@ export function XIcon() {
 
 export function TwitterIcon() {
   return (
-    <svg
-      className="w-10 h-10"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
+    <svg className="w-10 h-10" viewBox="0 0 24 24" aria-hidden="true">
       <defs>
-        <linearGradient id="twitterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient
+          id="twitterGradient"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+        >
           <stop offset="0%" stopColor="#3b82f6" />
           <stop offset="100%" stopColor="#9333ea" />
         </linearGradient>

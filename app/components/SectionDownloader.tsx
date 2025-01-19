@@ -23,7 +23,7 @@ export default function SectionDownloader() {
         </div>
 
         <h1
-          className={`${dmSerif.className} text-6xl sm:text-7xl md:text-8xl tracking-tight text-amber-950 leading-[1.1]`}
+          className={`${dmSerif.className} text-5xl sm:text-6xl md:text-7xl tracking-tight text-amber-950 leading-[1.1]`}
         >
           Save Twitter Videos
           <span className="block italic text-amber-800">With Grace</span>

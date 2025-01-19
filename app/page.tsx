@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import SectionDownloader from "@/app/components/SectionDownloader";
 import ContentSection from "@/app/components/ContentSection";
+import { berkshire } from "@/components/Font";
 
 // Add JSON-LD schema for better SEO
 const jsonLd = {
@@ -61,15 +62,16 @@ const faqs = [
 
 export default function Home() {
   return (
-    <main className="flex-1 container mx-auto px-4 py-8">
+    <main className="flex-1">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <SectionDownloader />
-
-      <ContentSection howToSteps={howToSteps} features={features} faqs={faqs} />
+      <div className="container mx-auto">
+        <SectionDownloader />
+        <ContentSection howToSteps={howToSteps} features={features} faqs={faqs} />
+      </div>
     </main>
   );
 }

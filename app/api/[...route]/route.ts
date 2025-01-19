@@ -4,7 +4,6 @@ import { setupMiddleware } from "../middleware";
 import { ApiService } from "../services/api-service";
 
 const app = new Hono().basePath("/api");
-
 // Setup middleware
 setupMiddleware(app);
 

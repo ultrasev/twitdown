@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Twitter Video Downloader - TwitDown.com",
   description:
-    "Easy-to-use Twitter video downloader. Download Twitter videos instantly with TwitDown.com",
+    "Documentation for TwitDown.com, an easy-to-use Twitter video downloader. Download Twitter videos instantly with TwitDown.com",
   keywords:
     "twitter video downloader, download twitter videos, twitter video saver",
   openGraph: {
@@ -18,62 +18,113 @@ export const metadata: Metadata = {
 
 function AboutPage() {
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
-      {/* Main Content */}
-      <div className="prose dark:prose-invert max-w-none">
-        <p className="lead">为了下载 Twitter 视频，我做了个网站。</p>
+    <article className="max-w-5xl mx-auto px-4 py-12 min-h-screen rounded-xl">
+      <div className="prose max-w-none">
+        <h1 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+          About TwitDown
+        </h1>
 
-        <p>
-          说是网站，其实就是一个封装了视频解析 API
-          的页面，输入推文链接，返回视频下载地址， 简单直观，网站地址：
+        <p className="text-xl mb-6">I built this website to simplify Twitter video downloads.</p>
+
+        <p className="mb-6">
+          At its core, it&apos;s a streamlined interface wrapping a video parsing API. Simply input a tweet URL,
+          and get the video download link. Check it out at{" "}
           <Link
             href="https://twitdown.com"
-            className="text-blue-600 dark:text-blue-400"
+            className="text-blue-600 hover:text-blue-700 transition-colors duration-200 underline decoration-2 decoration-blue-200"
           >
             twitdown.com
           </Link>
-          。
+          .
         </p>
 
-        <p>
-          为了避免重复解析（节省 API
-          成本），解析后的视频地址会入库存储，下次访问时，
-          优先从数据库中查询并返回。
+        <p className="mb-8">
+          To optimize API costs and improve performance, parsed video URLs are stored in our database.
+          Subsequent requests for the same video are served directly from the cache.
         </p>
 
-        <Image
-          src="/structure.png"
-          alt="TwitDown workflow"
-          width={800}
-          height={400}
-          className="rounded-lg my-8"
-        />
+        <div className="relative rounded-xl overflow-hidden shadow-2xl mb-12">
+          <Image
+            src="/structure.png"
+            alt="TwitDown workflow diagram showing the system architecture"
+            width={800}
+            height={400}
+            className="w-full"
+            priority
+          />
+        </div>
 
-        <section id="tech-stack">
-          <h2 className="text-2xl font-bold mt-8 mb-4">技术栈</h2>
-          <ul className="list-disc pl-6">
-            <li>前端：Next.js</li>
-            <li>后端：Hono</li>
-            <li>数据库：PostgreSQL</li>
-            <li>部署：Vercel</li>
-            <li>Video parse API: Twitter API</li>
-            <li>统计：Umami</li>
-            <li>Rate limiter: upstash</li>
+        <section id="tech-stack" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 inline-block border-b-4 border-blue-500">
+            Tech Stack
+          </h2>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none pl-0">
+            {[
+              { label: "Frontend", value: "Next.js" },
+              { label: "Backend", value: "Hono", link: "https://hono.dev/" },
+              { label: "Database", value: "PostgreSQL", link: "https://www.postgresql.org/" },
+              { label: "Deployment", value: "Vercel", link: "https://vercel.com/" },
+              { label: "Video parse API", value: "Twitter API", link: "https://developer.twitter.com/en/docs/twitter-api" },
+              { label: "Statistics", value: "Umami", link: "https://umami.is/" },
+              { label: "Rate limiter", value: "upstash", link: "https://upstash.com/" },
+            ].map(({ label, value, link }) => (
+              <li key={label} className="flex items-center p-4 rounded-lg bg-white shadow-sm">
+                <span className="font-medium text-gray-600 mr-2">{label}:</span>
+                {link ? (
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-700 transition-colors duration-200"
+                  >
+                    {value}
+                  </a>
+                ) : (
+                  <span>{value}</span>
+                )}
+              </li>
+            ))}
           </ul>
-          关于 hono，一开始我使用的 NextJs 自带的 API 路由，但尝试使用了 Hono
-          之后，发现跟我的 习惯非常匹配，之前用 FastAPI
-          的开发习惯，可以无缝迁移到 Hono 上。 Nextjs 默认的 API
-          路由在使用时对我来说有点麻烦，比如在设置 Middleware 时，我需要 1.
-          创建一个middleware.ts 文件； 2. 创建中间件 ; 3. 在 middleware.ts
-          中设置规则，根据不同的请求路径，设置不同的中间件；
-          很多时候，我需要根据正则表达式来设置不同的中间件，比如
-          `/api/v1/download` 都要走验证。 而 hono
-          的中间件设置非常简单，很多工作这个框架已经帮开发者做了。
-          比如这个小项目 twitdown 现在 hono 路由设置就如下所示 ，非常清爽：
-          <pre>
-            <code>
-              {`
-              import { Hono } from "hono";
+        </section>
+
+        <section id="hono-comparison" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 inline-block border-b-4 border-blue-500">
+            Why Hono?
+          </h2>
+
+          <div className="space-y-6">
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <p className="mb-4">
+                I initially started with Next.js API routes but switched to Hono for its simplicity and elegance:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Familiar experience for FastAPI developers - seamless transition</li>
+                <li>Built-in middleware configuration - everything works out of the box</li>
+                <li>Clean and intuitive routing system</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <p className="mb-4">Next.js API routes require more setup for middleware:</p>
+              <ul className="list-decimal pl-6 space-y-2">
+                <li>Separate middleware.ts file required</li>
+                <li>Custom middleware implementation</li>
+                <li>Additional configuration in middleware.ts</li>
+              </ul>
+            </div>
+
+            <p>
+              For example, adding authentication to <code className="bg-gray-100 px-2 py-1 rounded">/api/v1/download</code>
+              is straightforward with Hono. Here&apos;s how clean it looks:
+            </p>
+          </div>
+
+          <div className="my-8 rounded-lg overflow-hidden bg-gray-50">
+            <div className="flex items-center justify-between px-4 py-2 bg-gray-100">
+              <span className="text-sm font-medium">Hono Route Setup</span>
+            </div>
+            <pre className="p-4 overflow-x-auto">
+              <code className="text-sm">{`import { Hono } from "hono";
 import { handle } from "hono/vercel";
 import { setupMiddleware } from "../middleware";
 import { ApiService } from "../services/api-service";
@@ -90,16 +141,16 @@ app.get("/analytics", ApiService.handleAnalytics);
 app.post("/twitter/parse", ApiService.handleTwitterParse);
 
 export const GET = handle(app);
-export const POST = handle(app);
+export const POST = handle(app);`}</code>
+            </pre>
+          </div>
 
-              `}
-            </code>
-          </pre>
-          而做为对比，之前使用 Nextjs 的 API 路由时，需要设置中间件，代码如下：
-          <pre>
-            <code>
-              {`
-              import { NextResponse } from "next/server";
+          <div className="my-8 rounded-lg overflow-hidden bg-gray-50">
+            <div className="flex items-center justify-between px-4 py-2 bg-gray-100">
+              <span className="text-sm font-medium">Next.js Middleware Setup</span>
+            </div>
+            <pre className="p-4 overflow-x-auto">
+              <code className="text-sm">{`import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { checkAuth } from "@/lib/middleware/auth";
 import { checkRateLimit } from "@/lib/middleware/rate-limit";
@@ -124,53 +175,63 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: "/api/:path*",
-};
+};`}</code>
+            </pre>
+          </div>
 
-              `}
-            </code>
-          </pre>
-          当然，这里不是说 hono 要优于 Nextjs，而是说 hono
-          的设计理念更符合我的倾向，代码可读性更好，也好维护扩展。
+          <p className="mb-6">
+            This isn&apos;t to say Hono is superior to Next.js - rather, its design philosophy aligns better with my preferences,
+            offering better code readability and maintainability.
+          </p>
+
           <p>
-            TwitDown 项目的代码已经开源到 github 上：
+            The TwitDown project is open source and available on GitHub:{" "}
             <Link
               href="https://github.com/ultrasev/twitdown"
-              className="text-blue-600 dark:text-blue-400 hover:underline"
+              className="text-blue-600 hover:text-blue-700 transition-colors duration-200 ml-2"
             >
               ultrasev/twitdown
             </Link>
-            。
+            .
           </p>
         </section>
 
-        <section id="seo">
-          <h2 className="text-2xl font-bold mt-8 mb-4">SEO</h2>
-          <p>
-            做这个网站，除了方便自己下载视频之外，其实还有一个目的是为了测试下
-            SEO（search engine optimization）技巧。
-          </p>
-          SEO 做这个网站，除了方便自己下载视频之外，其实还有一个目的是为了测试下
-          SEO（search engine optimization）技巧。
-          糊个网站是很简单的事，但让网站在搜索引擎中排名靠前，就需要做很多优化工作。最近在看《SEO
-          实战手册》，了解了一些技巧，正尝试着在各个项目中实践一下。 作为 SEO
-          小白，很多工作都是让 Cursor 做的，比如界面的 metadata，网站的
-          robots.txt，sitemap.xml。网站上线之后用 AITDK
-          测试了一下，效果还不错，title, description, keywords, openGraph,
-          twitter card，该配置的地方都配置了。
+        <section id="seo" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 inline-block border-b-4 border-blue-500">
+            SEO
+          </h2>
+          <div className="bg-white rounded-lg p-6 shadow-sm space-y-4">
+            <p>
+              Beyond creating a useful tool for video downloads, this project serves as a testbed for SEO techniques.
+            </p>
+            <p>
+              While building a website is straightforward, achieving high search engine rankings requires careful optimization.
+              I&apos;ve been studying SEO best practices and implementing them across various projects.
+            </p>
+            <p>
+              As an SEO novice, I leveraged Cursor for many optimizations, including metadata, robots.txt, and sitemap.xml.
+              Post-launch testing with AITDK showed promising results, with proper configuration of titles, descriptions,
+              keywords, OpenGraph, and Twitter cards.
+            </p>
+          </div>
         </section>
 
-        <section id="optimization">
-          <h2 className="text-2xl font-bold mt-8 mb-4">优化</h2>
-          <ul className="list-disc pl-6">
-            <li>
-              UI 非常依赖于开发者的经验与审美，不能仅靠 Cursor 来生成"更好看的
-              UI"，但目前来看，Cursor 的经验与审美是优于我的。
-            </li>
-            <li>
-              SEO 持续优化，如果在 twitter, reddit 等平台上推广一下，我觉得 PV
-              应该会涨的很快，目前我想测试一下关键词及描述语的极限在哪里。
-            </li>
-          </ul>
+        <section id="optimization" className="mb-12">
+          <h2 className="text-3xl font-bold mb-6 inline-block border-b-4 border-blue-500">
+            Future Improvements
+          </h2>
+          <div className="bg-white rounded-lg p-6 shadow-sm">
+            <ul className="list-disc pl-6 space-y-4">
+              <li>
+                UI design heavily relies on developer experience and aesthetic sense. While Cursor provides solid suggestions,
+                there&apos;s always room for human-driven improvements.
+              </li>
+              <li>
+                Ongoing SEO optimization - promoting on platforms like Twitter and Reddit could significantly boost page views.
+                Currently testing the limits of keyword optimization and content descriptions.
+              </li>
+            </ul>
+          </div>
         </section>
       </div>
     </article>

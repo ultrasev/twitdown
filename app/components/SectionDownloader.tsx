@@ -14,7 +14,7 @@ export default function SectionDownloader() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4 bg-gradient-to-b from-amber-50/50 to-transparent">
       <div className="w-full max-w-4xl mx-auto space-y-12 text-center">
-        <div className="inline-flex items-center px-7 py-3 border border-amber-900/20 rounded-sm shadow-sm bg-white/80 backdrop-blur-sm">
+        <div className="mt-8 inline-flex items-center px-7 py-3 border border-amber-900/20 rounded-sm shadow-sm bg-white/80 backdrop-blur-sm">
           <span
             className={`${playfair.className} text-amber-900/90 uppercase tracking-[0.2em] text-sm font-medium`}
           >

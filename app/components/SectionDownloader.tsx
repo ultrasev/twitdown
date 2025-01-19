@@ -1,48 +1,68 @@
 import { Suspense } from "react";
 import DownloaderForm from "@/app/components/DownloaderForm";
 import ButtonShare from "./ButtonShare";
-import { comfortaa, young_serif } from "@/components/Font";
+import { DM_Serif_Display, Playfair_Display } from "next/font/google";
+
+// Initialize the fonts
+const dmSerif = DM_Serif_Display({ weight: "400", subsets: ["latin"] });
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+});
 
 export default function SectionDownloader() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
-      <div className="w-full max-w-4xl mx-auto space-y-8 text-center">
-        <div className="inline-flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-            100% Free & Secure Downloads
+    <div className="flex flex-col items-center justify-center min-h-[60vh] px-4 bg-gradient-to-b from-amber-50/50 to-transparent">
+      <div className="w-full max-w-4xl mx-auto space-y-12 text-center">
+        <div className="inline-flex items-center px-7 py-3 border border-amber-900/20 rounded-sm shadow-sm bg-white/80 backdrop-blur-sm">
+          <span
+            className={`${playfair.className} text-amber-900/90 uppercase tracking-[0.2em] text-sm font-medium`}
+          >
+            Simple & Reliable Downloads
           </span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl font-bold">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-            <span className={young_serif.className}>
-              Download Any Twitter Video
-            </span>
-          </span>
+        <h1
+          className={`${dmSerif.className} text-6xl sm:text-7xl md:text-8xl tracking-tight text-amber-950 leading-[1.1]`}
+        >
+          Save Twitter Videos
+          <span className="block italic text-amber-800">With Grace</span>
         </h1>
 
-        <div className="flex flex-wrap justify-center gap-4 text-sm">
-          <span className={comfortaa.className}>
-            <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full">
-              ⚡ Lightning Fast
+        <div className="flex flex-wrap justify-center gap-3 text-sm">
+          {[
+            "⚡ Swift & Seamless",
+            "🎥 Original Quality",
+            "🔒 Privacy Assured",
+          ].map((feature) => (
+            <span
+              key={feature}
+              className={`${playfair.className} px-6 py-3 bg-white/80 text-amber-900
+                             border border-amber-200 uppercase tracking-wider font-medium
+                             shadow-sm backdrop-blur-sm hover:bg-amber-100 transition-colors
+                             duration-200`}
+            >
+              {feature}
             </span>
-            <span className="px-4 py-2 bg-purple-100 text-purple-700 rounded-full">
-              🎥 HD Quality
-            </span>
-            <span className="px-4 py-2 bg-pink-100 text-pink-700 rounded-full">
-              🔒 No Login Required
-            </span>
-          </span>
+          ))}
         </div>
 
-        <p className="text-xl text-gray-600">
-          <span className={comfortaa.className}>
-            The fastest way to save Twitter/X videos in HD quality - No
-            registration needed!
+        <p
+          className={`${dmSerif.className} text-lg sm:text-xl text-amber-800/90 max-w-2xl mx-auto leading-relaxed`}
+        >
+          Save any Twitter/X video in original quality
+          <span
+            className={`${playfair.className} block mt-1 text-base sm:text-lg font-normal`}
+          >
+            No fuss, no sign-ups, just elegant simplicity.
           </span>
         </p>
 
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div className="text-amber-700 animate-pulse">Loading...</div>
+          }
+        >
           <DownloaderForm />
         </Suspense>
 

@@ -1,6 +1,6 @@
 import { db, sql } from "@/lib/db";
 import { twitterCache, TwitterVideoData } from "@/lib/db/schema";
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, asc } from "drizzle-orm";
 // Modified interface to include priority
 const NEW_API_URL = process.env.NEW_API_URL;
 const NEW_API_KEY = process.env.NEW_API_KEY;
@@ -132,7 +132,7 @@ export const TwitterService = {
       });
   },
 
-  // Get analytics data
+  // Get analytics data with multiple ordering criteria
   async getAnalytics() {
     const videos = await db
       .select({
@@ -146,7 +146,7 @@ export const TwitterService = {
         createdAt: twitterCache.createdAt,
       })
       .from(twitterCache)
-      .orderBy(desc(twitterCache.viewCount))
+      .orderBy(asc(twitterCache.viewCount), desc(twitterCache.createdAt))
       .limit(50);
 
     return videos;

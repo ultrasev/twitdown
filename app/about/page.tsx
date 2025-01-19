@@ -51,9 +51,9 @@ function AboutPage() {
 
         <div className="relative rounded-xl overflow-hidden shadow-2xl mb-12">
           <Image
-            src="/structure.png"
+            src="/images/docs/chartflow.png"
             alt="TwitDown system architecture diagram"
-            width={800}
+            width={1000}
             height={400}
             className="w-full"
             priority

@@ -12,16 +12,19 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        courier: ["Courier", "Courier New", "monospace"],
+      },
       animation: {
-        'dot-1': 'dot 1s infinite',
-        'dot-2': 'dot 1s infinite 0.2s',
-        'dot-3': 'dot 1s infinite 0.4s',
+        "dot-1": "dot 1s infinite",
+        "dot-2": "dot 1s infinite 0.2s",
+        "dot-3": "dot 1s infinite 0.4s",
       },
       keyframes: {
         dot: {
-          '0%': { opacity: '0.2' },
-          '20%': { opacity: '1' },
-          '100%': { opacity: '0.2' },
+          "0%": { opacity: "0.2" },
+          "20%": { opacity: "1" },
+          "100%": { opacity: "0.2" },
         },
       },
     },

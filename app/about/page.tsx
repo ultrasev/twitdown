@@ -126,7 +126,7 @@ function AboutPage() {
             </h3>
 
             <div className="space-y-6">
-              <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="p-6 shadow-sm">
                 <p className="mb-4">
                   The project initially utilized Next.js API routes but
                   transitioned to Hono due to its simplicity and elegance:
@@ -150,9 +150,7 @@ function AboutPage() {
 
               <p>
                 For instance, implementing authentication for{" "}
-                <code className="bg-gray-100 px-2 py-1 rounded">
-                  /api/v1/download
-                </code>
+                <code className="px-2 py-1 rounded">/api/v1/download</code>
                 is remarkably straightforward with Hono. Here&apos;s an
                 illustrative example:
               </p>
@@ -165,7 +163,7 @@ function AboutPage() {
                 </span>
               </div>
               <pre className="p-4 overflow-x-auto">
-                <code className="text-sm">{`import { Hono } from "hono";
+                <code className="font-courier">{`import { Hono } from "hono";
 import { handle } from "hono/vercel";
 import { setupMiddleware } from "../middleware";
 import { ApiService } from "../services/api-service";
@@ -190,7 +188,7 @@ export const POST = handle(app);`}</code>
               In contrast, Next.js API routes require more extensive setup for
               middleware:
             </p>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
+            <div className="p-6 shadow-sm">
               <ul className="list-decimal pl-6 space-y-2">
                 <li>Necessity for a separate middleware.ts file</li>
                 <li>Custom middleware implementation requirements</li>
@@ -206,7 +204,7 @@ export const POST = handle(app);`}</code>
               </span>
             </div>
             <pre className="p-4 overflow-x-auto">
-              <code className="text-sm">{`import { NextResponse } from "next/server";
+              <code className="font-courier">{`import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { checkAuth } from "@/lib/middleware/auth";
 import { checkRateLimit } from "@/lib/middleware/rate-limit";
@@ -258,7 +256,7 @@ export const config = {
           <h2 className="text-3xl font-bold mb-6 inline-block border-b-4 border-blue-500">
             Search Engine Optimization Strategy
           </h2>
-          <div className="bg-white rounded-lg p-6 shadow-sm space-y-4">
+          <div className="p-6 shadow-sm space-y-4">
             <p>
               Beyond creating a functional tool for video downloads, this
               project serves as a practical testbed for implementing advanced
@@ -291,7 +289,7 @@ export const config = {
           <h2 className="text-3xl font-bold mb-6 inline-block border-b-4 border-blue-500">
             Future Enhancements
           </h2>
-          <div className="bg-white rounded-lg p-6 shadow-sm">
+          <div className="p-6 shadow-sm">
             <ul className="list-disc pl-6 space-y-4">
               <li>
                 UI design optimization: While AI tools like Cursor provide

@@ -1,13 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { Crimson_Pro, Inter } from "next/font/google";
-
-const crimsonPro = Crimson_Pro({
-  subsets: ["latin"],
-  weight: ["500", "600"],
-  style: ["normal"],
-});
-const inter = Inter({ subsets: ["latin"] });
 
 interface VideoPreviewProps {
   data: {
@@ -54,7 +46,7 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-amber-950/50 to-transparent" />
             <h3
-              className={`${inter.className} absolute bottom-4 left-4 right-4 text-amber-50 text-lg`}
+              className={`absolute bottom-4 left-4 right-4 text-amber-50 text-lg`}
             >
               {data.text.length > 24
                 ? data.text.slice(0, 24) + "..."
@@ -65,9 +57,7 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
           {/* Download Options Section */}
           <div className="flex flex-col justify-center w-full space-y-6">
             <div>
-              <h2
-                className={`text-2xl text-amber-950 mb-2`}
-              >
+              <h2 className={`text-2xl text-amber-950 mb-2`}>
                 Download Options
               </h2>
               <p className={`text-amber-800/90 text-sm`}>
@@ -81,7 +71,7 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
                   key={index}
                   href={res.url}
                   download
-                  className={`${inter.className} group flex items-center justify-between w-full px-4 py-3
+                  className={`group flex items-center justify-between w-full px-4 py-3
                              bg-amber-100 hover:bg-amber-200
                              border border-amber-200
                              text-amber-900 rounded-sm

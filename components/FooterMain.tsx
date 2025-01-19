@@ -3,7 +3,7 @@ import { young_serif } from "@/components/Font";
 
 export default function FooterMain() {
   return (
-    <footer className="border-t border-amber-200/50 bg-gradient-to-b from-transparent to-amber-50/30">
+    <footer className="mt-16 border-t border-amber-200/50 bg-gradient-to-b from-transparent to-amber-50/30">
       <div className="container mx-auto px-4 py-8">
         <div
           className={`${young_serif.className} flex flex-col items-center justify-center text-center space-y-4`}

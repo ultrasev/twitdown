@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import SectionDownloader from "@/app/components/SectionDownloader";
 import ContentSection from "@/app/components/ContentSection";
-import { berkshire } from "@/components/Font";
 
 // Add JSON-LD schema for better SEO
 const jsonLd = {
@@ -70,7 +69,11 @@ export default function Home() {
 
       <div className="container mx-auto">
         <SectionDownloader />
-        <ContentSection howToSteps={howToSteps} features={features} faqs={faqs} />
+        <ContentSection
+          howToSteps={howToSteps}
+          features={features}
+          faqs={faqs}
+        />
       </div>
     </main>
   );

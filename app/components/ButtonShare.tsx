@@ -1,8 +1,5 @@
 import { FaTwitter, FaFacebook } from "react-icons/fa";
 import ButtonShareClient from "@/app/components/ButtonShareClient";
-import { Playfair_Display } from "next/font/google";
-
-const playfair = Playfair_Display({ subsets: ["latin"] });
 
 // Move share URL generation to server component
 function getShareUrl(platform: string, url: string): string {

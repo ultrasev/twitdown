@@ -20,7 +20,7 @@ export default function ContentSection({
   faqs,
 }: ContentSectionProps) {
   return (
-    <div className="max-w-4xl mx-auto mt-12 space-y-16 px-4">
+    <div className="max-w-3xl mx-auto mt-16 space-y-16 px-2">
       {/* How-to Section */}
       <section>
         <h2

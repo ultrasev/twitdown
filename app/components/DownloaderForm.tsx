@@ -1,8 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { Crimson_Pro, Inter } from "next/font/google";
 import CardVideoPreview from "@/app/components/CardVideoPreview";
 import { http } from "@/lib/http";
+
+const crimsonPro = Crimson_Pro({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  style: ["normal"],
+});
+const inter = Inter({ subsets: ["latin"] });
 
 interface VideoData {
   thumbnail: string;
@@ -55,15 +63,20 @@ export default function DownloaderForm() {
 
   return (
     <div className="mt-8 mx-auto text-center">
-      <div className="max-w-3xl mx-auto p-8 rounded-3xl bg-white/70 backdrop-blur-lg border border-gray-200/50 shadow-xl">
-        <form onSubmit={handleSubmit} className="relative">
+      <div className="max-w-3xl mx-auto">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="relative">
             <input
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="Paste Twitter/X video URL here"
-              className="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+              className={`${inter.className} w-full px-6 py-4 rounded-lg
+                bg-white/80 backdrop-blur-sm
+                border border-amber-200
+                text-amber-900 placeholder-amber-400
+                focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400
+                transition-colors duration-200`}
               disabled={isLoading}
             />
             <button
@@ -71,7 +84,7 @@ export default function DownloaderForm() {
               onClick={() =>
                 navigator.clipboard.readText().then((text) => setUrl(text))
               }
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-amber-400 hover:text-amber-600 transition-colors duration-200"
               disabled={isLoading}
             >
               <ClipboardIcon />
@@ -81,27 +94,35 @@ export default function DownloaderForm() {
           <button
             type="submit"
             disabled={isLoading || !url}
-            className="mt-4 w-full py-3 rounded-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-white font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center space-x-2"
+            className={`w-full py-2
+              bg-amber-100 hover:bg-amber-200
+              border border-amber-200
+              text-amber-900 text-lg tracking-wide
+              disabled:opacity-50 disabled:cursor-not-allowed
+              transition-colors duration-200
+              rounded`}
           >
-            <DownloadIcon />
-            <span>
-              {isLoading ? (
-                <span className="inline-flex items-center">
-                  Processing
-                  <span className="ml-1 animate-dot-1">.</span>
-                  <span className="animate-dot-2">.</span>
-                  <span className="animate-dot-3">.</span>
-                </span>
-              ) : (
-                "Download"
-              )}
-            </span>
+            {isLoading ? (
+              <span className="inline-flex items-center">
+                Processing
+                <span className="ml-1 animate-dot-1">.</span>
+                <span className="animate-dot-2">.</span>
+                <span className="animate-dot-3">.</span>
+              </span>
+            ) : (
+              <span className="inline-flex items-center justify-center gap-2">
+                <DownloadIcon />
+                Download Video
+              </span>
+            )}
           </button>
         </form>
       </div>
 
       {error && (
-        <p className="text-red-500 mt-8 font-serif font-bold">{error}</p>
+        <p className={`${crimsonPro.className} text-red-500 mt-8 text-lg`}>
+          {error}
+        </p>
       )}
 
       {videoData && <CardVideoPreview data={videoData} />}
@@ -120,7 +141,7 @@ function ClipboardIcon() {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
+        strokeWidth={1.5}
         d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
       />
     </svg>
@@ -138,7 +159,7 @@ function DownloadIcon() {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
+        strokeWidth={1.5}
         d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
       />
     </svg>

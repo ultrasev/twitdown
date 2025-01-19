@@ -1,11 +1,14 @@
 import { FaTwitter, FaFacebook } from "react-icons/fa";
 import ButtonShareClient from "@/app/components/ButtonShareClient";
+import { Playfair_Display } from 'next/font/google';
+
+const playfair = Playfair_Display({ subsets: ['latin'] });
 
 // Move share URL generation to server component
 function getShareUrl(platform: string, url: string): string {
   const encodedUrl = encodeURIComponent(url);
   const text = encodeURIComponent(
-    "Download Twitter videos easily with TwitDown! 🎥✨"
+    "Save Twitter videos with elegance and simplicity ✨"
   );
 
   const urls = {
@@ -19,11 +22,13 @@ function getShareUrl(platform: string, url: string): string {
 // Server Component
 function ButtonShare({ url }: { url: string }) {
   return (
-    <div className="flex items-center justify-center gap-2">
-      <span className="font-serif">Share on:</span>
+    <div className="flex items-center justify-center gap-3">
+      <span className={`${playfair.className} text-amber-900/90 tracking-wide`}>
+        Share with friends:
+      </span>
       {[
-        { platform: "twitter", icon: <FaTwitter className="w-6 h-6" /> },
-        { platform: "facebook", icon: <FaFacebook className="w-6 h-6" /> },
+        { platform: "twitter", icon: <FaTwitter className="w-5 h-5" /> },
+        { platform: "facebook", icon: <FaFacebook className="w-5 h-5" /> },
       ].map(({ platform, icon }) => (
         <ButtonShareClient
           key={platform}

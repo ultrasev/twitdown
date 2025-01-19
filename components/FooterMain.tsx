@@ -1,25 +1,32 @@
-// import { young_serif } from "@/components/Font";
+import { young_serif } from "@/components/Font";
 // import { TwitterIcon } from "@/components/icons";
 
 export default function FooterMain() {
   return (
-    <footer className="border-t dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto px-4 py-6">
-        <div className="flex flex-col items-center justify-center text-gray-600 dark:text-gray-400 font-serif text-center">
-          <div>© {new Date().getFullYear()} TwitDown. All rights reserved.</div>
-          <div className="flex items-center space-x-4 mt-2">
+    <footer className="border-t border-amber-200/50 bg-gradient-to-b from-transparent to-amber-50/30">
+      <div className="container mx-auto px-4 py-8">
+        <div
+          className={`${young_serif.className} flex flex-col items-center justify-center text-center space-y-4`}
+        >
+          <div className="text-amber-900/80">
+            © {new Date().getFullYear()} TwitDown. All rights reserved.
+          </div>
+
+          <div className="flex items-center space-x-6">
             <a
               href="/terms"
-              className="hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+              className="text-amber-800 hover:text-amber-950
+                       transition-colors duration-200 text-sm tracking-wide"
             >
-              Terms
+              Terms of Service
             </a>
-            <span>·</span>
+            <span className="text-amber-300">✦</span>
             <a
               href="/privacy"
-              className="hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+              className="text-amber-800 hover:text-amber-950
+                       transition-colors duration-200 text-sm tracking-wide"
             >
-              Privacy
+              Privacy Policy
             </a>
           </div>
           {/* <a

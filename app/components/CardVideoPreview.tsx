@@ -1,5 +1,13 @@
 import React from "react";
 import Image from "next/image";
+import { Crimson_Pro, Inter } from 'next/font/google';
+
+const crimsonPro = Crimson_Pro({
+  subsets: ['latin'],
+  weight: ['500', '600'],
+  style: ['normal']
+});
+const inter = Inter({ subsets: ['latin'] });
 
 interface VideoPreviewProps {
   data: {
@@ -32,54 +40,55 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
 
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8">
-      <div className="mt-8 max-w-7xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-        <div className="grid md:grid-cols-2 gap-6">
+      <div className="mt-8 max-w-4xl mx-auto overflow-hidden">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           {/* Video Preview Section */}
-          <div className="mt-6 relative aspect-video md:aspect-square w-[80%] mx-auto">
+          <div className="relative aspect-video w-full">
             <Image
               src={data.thumbnail}
               alt="Video thumbnail"
               fill
-              className="object-cover rounded-2xl"
-              sizes="(max-width: 640px) 64vw, 32vw"
+              className="object-cover rounded-sm border border-amber-200"
+              sizes="(max-width: 640px) 90vw, 45vw"
               priority
             />
-            <h3 className="absolute bottom-4 left-4 right-4 text-white text-lg font-medium z-10">
-              {data.text.length > 16
-                ? data.text.slice(0, 16) + "..."
-                : data.text}
+            <div className="absolute inset-0 bg-gradient-to-t from-amber-950/50 to-transparent" />
+            <h3 className={`${inter.className} absolute bottom-4 left-4 right-4 text-amber-50 text-lg`}>
+              {data.text.length > 24 ? data.text.slice(0, 24) + "..." : data.text}
             </h3>
           </div>
 
           {/* Download Options Section */}
-          <div className="p-8 md:p-10 flex flex-col justify-center w-full">
-            <h2 className="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-3">
-              Download
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-sm mb-6">
-              Choose your preferred video quality
-            </p>
+          <div className="flex flex-col justify-center w-full space-y-6">
+            <div>
+              <h2 className={`${crimsonPro.className} text-2xl text-amber-950 mb-2`}>
+                Download Options
+              </h2>
+              <p className={`${inter.className} text-amber-800/90 text-sm`}>
+                Choose your preferred video quality
+              </p>
+            </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {data.resolutions.map((res, index) => (
                 <a
                   key={index}
                   href={res.url}
                   download
-                  className="group flex items-center justify-between w-full px-4 py-3
-                             bg-gradient-to-r from-blue-500 to-purple-500
-                             hover:from-blue-600 hover:to-purple-600
-                             text-white rounded-xl transition-all duration-200
-                             hover:shadow-lg hover:-translate-y-0.5"
+                  className={`${inter.className} group flex items-center justify-between w-full px-4 py-3
+                             bg-amber-100 hover:bg-amber-200
+                             border border-amber-200
+                             text-amber-900 rounded-sm
+                             transition-colors duration-200`}
                 >
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center gap-3">
                     <DownloadIcon />
                     <span className="font-medium">
-                      Download {formatResolution(res.resolution)}
+                      {formatResolution(res.resolution)}
                     </span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm bg-white/20 px-3 py-1 rounded-full">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm bg-amber-200/50 px-3 py-1">
                       {res.quality}
                     </span>
                     <ArrowIcon />
@@ -97,7 +106,7 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
 function DownloadIcon() {
   return (
     <svg
-      className="w-9 h-9"
+      className="w-5 h-5 text-amber-700"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -105,7 +114,7 @@ function DownloadIcon() {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
+        strokeWidth={1.5}
         d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
       />
     </svg>
@@ -115,7 +124,7 @@ function DownloadIcon() {
 function ArrowIcon() {
   return (
     <svg
-      className="w-5 h-5 opacity-70 group-hover:translate-x-1 transition-transform"
+      className="w-4 h-4 text-amber-600 group-hover:translate-x-1 transition-transform"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -123,7 +132,7 @@ function ArrowIcon() {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth={2}
+        strokeWidth={1.5}
         d="M9 5l7 7-7 7"
       />
     </svg>

@@ -17,7 +17,7 @@ export default function PageHeader() {
           <div className="flex items-center gap-4">
             <Link
               href="/about"
-              className="text-gray-600 text-2xl hover:text-gray-900 dark:text-gray-600 dark:hover:text-gray-100"
+              className="text-gray-600 text-2xl hover:text-gray-900 dark:text-gray-600"
             >
               <span className={`${berkshire.className}`}>About</span>
             </Link>
@@ -26,7 +26,7 @@ export default function PageHeader() {
           <nav className="flex items-center gap-16">
             <Link
               href="/changelog"
-              className="text-gray-600 text-2xl hover:text-gray-900 dark:text-gray-600 dark:hover:text-gray-100"
+              className="text-gray-600 text-2xl hover:text-gray-900 dark:text-gray-600"
             >
               <span className={`${berkshire.className}`}>Changelog</span>
             </Link>

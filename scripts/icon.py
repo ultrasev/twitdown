@@ -4,7 +4,7 @@ from manim import *
 class TwitterDownloadIcon(Scene):
     def construct(self):
         # Set background color to pure black
-        self.camera.background_color = WHITE
+        self.camera.background_color = None
 
         # Create the egg using an ellipse - make it golden!
         egg = Ellipse(

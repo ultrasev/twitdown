@@ -1,10 +1,11 @@
-import { getAnalytics, Video } from "@/lib/actions/analytics";
+import { getAnalytics, getStats } from "@/lib/actions/analytics";
 import { Suspense } from "react";
 import Loading from "./loading";
 import Image from "next/image";
 
 async function AnalyticsContent() {
-  const { videos }: { videos: Video[] } = await getAnalytics();
+  const [{ videos }, stats] = await Promise.all([getAnalytics(), getStats(7)]);
+
   const videoArray = Array.isArray(videos) ? videos : [];
 
   return (
@@ -25,12 +26,22 @@ async function AnalyticsContent() {
             ),
             icon: "👀",
           },
+          {
+            title: "Unique Users",
+            value: stats[0]?.uniqueUsers || 0,
+            icon: "👥",
+          },
         ].map((stat) => (
-          <div key={stat.title} className="bg-white p-6 rounded-lg shadow-sm">
+          <div
+            key={stat.title}
+            className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm"
+          >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">{stat.title}</p>
-                <p className="text-2xl font-bold">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {stat.title}
+                </p>
+                <p className="text-2xl font-bold dark:text-white">
                   {stat.value.toLocaleString()}
                 </p>
               </div>
@@ -38,6 +49,54 @@ async function AnalyticsContent() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Daily Stats Table */}
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
+        <h2 className="text-lg font-semibold p-6 border-b dark:border-gray-700">
+          Daily Statistics
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead className="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  Date
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  New Videos
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  Total Views
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                  Unique Users
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+              {stats.map((stat) => (
+                <tr
+                  key={stat.date.toString()}
+                  className="hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-300">
+                    {new Date(stat.date).toLocaleDateString()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 dark:text-blue-400 font-medium">
+                    {stat.videoCount.toLocaleString()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-300">
+                    {stat.totalViews.toLocaleString()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-300">
+                    {stat.uniqueUsers.toLocaleString()}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Videos Table */}

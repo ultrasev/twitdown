@@ -132,7 +132,22 @@ export const TwitterService = {
       });
   },
 
-  // Get analytics data with multiple ordering criteria
+  // Get daily statistics
+  async getDailyStats(days: number = 100) {
+    return db
+      .select({
+        date: sql`DATE(${twitterCache.createdAt})`.as('date'),
+        videoCount: sql`COUNT(*)`.as('videoCount'),
+        totalViews: sql`SUM(${twitterCache.viewCount})`.as('totalViews'),
+        uniqueUsers: sql`COUNT(DISTINCT ${twitterCache.username})`.as('uniqueUsers'),
+      })
+      .from(twitterCache)
+      .groupBy(sql`DATE(${twitterCache.createdAt})`)
+      .orderBy(desc(sql`DATE(${twitterCache.createdAt})`))
+      .limit(days);
+  },
+
+  // Keep original getAnalytics clean
   async getAnalytics() {
     const videos = await db
       .select({

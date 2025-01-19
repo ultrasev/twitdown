@@ -13,6 +13,17 @@ export const ApiService = {
     }
   },
 
+  // Handle daily stats request
+  async handleDailyStats(c: Context) {
+    try {
+      const stats = await TwitterService.getDailyStats();
+      return c.json({ stats });
+    } catch (error) {
+      console.error("Failed to fetch daily stats:", error);
+      return c.json({ error: "Failed to fetch daily stats" }, 500);
+    }
+  },
+
   // Handle Twitter parse request
   async handleTwitterParse(c: Context) {
     try {

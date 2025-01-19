@@ -12,6 +12,7 @@ app.get("/hello", (c) => c.json({ message: "Hello, World!" }));
 
 // Protected routes
 app.get("/analytics", ApiService.handleAnalytics);
+app.get("/dailystats", ApiService.handleDailyStats);
 app.post("/twitter/parse", ApiService.handleTwitterParse);
 
 export const GET = handle(app);

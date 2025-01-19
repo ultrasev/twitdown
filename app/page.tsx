@@ -43,7 +43,7 @@ const features = [
   "Free to use - no registration required",
   "High-quality video downloads",
   "Mobile-friendly interface",
-  "Fast and secure downloads",
+  "Fast and easy to use",
   "Works with all Twitter/X videos",
   "Multiple format options",
 ];

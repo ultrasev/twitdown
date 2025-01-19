@@ -33,7 +33,7 @@ export default function SectionDownloader() {
           {[
             "⚡ Swift & Seamless",
             "🎥 Original Quality",
-            "🔒 Privacy Assured",
+            "✨ Easy to Use",
           ].map((feature) => (
             <span
               key={feature}

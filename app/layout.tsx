@@ -25,7 +25,8 @@ const jsonLd = {
 
 export const metadata: Metadata = {
   title: "TwitDown - Download Twitter Videos Free",
-  description: "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
+  description:
+    "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
   keywords: [
     "twitter video downloader",
     "x video downloader",
@@ -39,7 +40,8 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://twitdown.com",
     title: "TwitDown - Download Twitter Videos Free",
-    description: "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
+    description:
+      "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
     images: [
       {
         url: "https://twitdown.com/og-image.png",
@@ -52,7 +54,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "TwitDown - Download Twitter Videos Free",
-    description: "Download Twitter/X videos in HD quality for free. No registration required.",
+    description:
+      "Download Twitter/X videos in HD quality for free. No registration required.",
     images: ["https://twitdown.com/og-image.png"],
   },
   alternates: {
@@ -85,11 +88,13 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <script
-          defer
-          src="https://umamidata.vercel.app/script.js"
-          data-website-id="1f38e5c7-1b48-43a9-a35c-c677bd671a9c"
-        ></script>
+        {process.env.NODE_ENV === "production" && (
+          <script
+            defer
+            src="https://umamidata.vercel.app/script.js"
+            data-website-id="1f38e5c7-1b48-43a9-a35c-c677bd671a9c"
+          ></script>
+        )}
         <div className="min-h-screen flex flex-col">
           <PageHeader />
           {children}

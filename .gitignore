@@ -43,3 +43,5 @@ local
 package-lock.json
 __pycache__/
 media
+.gitignore
+app/meta

@@ -78,7 +78,7 @@ const changelog: ChangelogEntry[] = [
 // Main changelog component
 export default function PageChangelog() {
   return (
-    <main className="container mx-auto px-4 py-8 max-w-4xl bg-white dark:bg-gray-900">
+    <main className="container mx-auto px-4 py-8 max-w-4xl">
       <div className="text-center mb-16">
         <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
           Changelog

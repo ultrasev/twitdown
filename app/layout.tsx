@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     "free twitter video",
     "tweetdown",
     "twitdown",
+    "twitdown.com",
     "download twitter video",
   ],
   authors: [{ name: "@twitdown" }],

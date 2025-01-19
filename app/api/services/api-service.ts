@@ -1,5 +1,5 @@
-import { Context } from 'hono';
-import { TwitterService } from './twitter-service';
+import { Context } from "hono";
+import { TwitterService } from "./twitter-service";
 
 export const ApiService = {
   // Handle analytics request
@@ -27,17 +27,16 @@ export const ApiService = {
         return c.json({ error: "Invalid Twitter URL" }, 400);
       }
 
-      // const cachedData = await TwitterService.getCachedData(statusId);
-      // if (cachedData) {
-      //   return c.json(cachedData);
-      // }
+      const cachedData = await TwitterService.getCachedData(statusId);
+      if (cachedData) {
+        return c.json(cachedData);
+      }
 
       const data = await TwitterService.fetchAndCache(url, statusId);
       return c.json(data);
-
     } catch (error) {
       console.error("Error parsing Twitter video:", error);
       return c.json({ error: "Failed to parse Twitter video" }, 500);
     }
-  }
+  },
 };

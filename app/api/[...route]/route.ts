@@ -5,7 +5,7 @@ import { ApiService } from "../services/api-service";
 
 const app = new Hono().basePath("/api");
 // Setup middleware
-setupMiddleware(app);
+// setupMiddleware(app);
 
 // Public routes
 app.get("/hello", (c) => c.json({ message: "Hello, World!" }));

@@ -76,7 +76,6 @@ export default function DownloaderForm() {
                 bg-white/60 backdrop-blur-sm
                 border border-amber-100
                 rounded
-                text-amber-900 placeholder-amber-400/70
                 focus:outline-none focus:ring-2 focus:ring-amber-200/50
                 transition-all duration-300 ease-in-out
                 shadow-[0_2px_15px_rgb(0,0,0,0.03)]`}

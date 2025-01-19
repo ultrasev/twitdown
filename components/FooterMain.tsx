@@ -6,12 +6,22 @@ export default function FooterMain() {
     <footer className="mt-16 border-t border-amber-200/50 bg-gradient-to-b from-transparent to-amber-50/30">
       <div className="container mx-auto px-4 py-8">
         <div
-          className={`${young_serif.className} flex flex-col items-center justify-center text-center space-y-4`}
+          className={`flex flex-col items-center justify-center text-center space-y-4`}
         >
-          <div className="text-amber-900/80">
-            © {new Date().getFullYear()} TwitDown. All rights reserved.
+          <div className={"text-amber-900/80"}>
+            ©{" "}
+            <span className={`${young_serif.className}`}>
+              {(() => {
+                const startYear = 2024;
+                const currentYear = new Date().getFullYear();
+                return `${startYear}${
+                  currentYear > startYear ? `-${currentYear}` : ""
+                }`;
+              })()}{" "}
+              TwitDown.{" "}
+            </span>
+            All rights reserved.
           </div>
-
           <div className="flex items-center space-x-6">
             <a
               href="/terms"

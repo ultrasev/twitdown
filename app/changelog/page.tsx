@@ -78,12 +78,12 @@ const changelog: ChangelogEntry[] = [
 // Main changelog component
 export default function PageChangelog() {
   return (
-    <main className="container mx-auto px-4 py-8 max-w-4xl">
+    <main className="container mx-auto px-8 py-8 max-w-5xl bg-stone-50">
       <div className="text-center mb-16">
-        <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
+        <h1 className="text-5xl font-serif font-bold text-stone-800">
           Changelog
         </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-400 mt-4">
+        <p className="font-serif text-xl text-stone-600 mt-4">
           Track our progress and updates
         </p>
       </div>
@@ -91,46 +91,40 @@ export default function PageChangelog() {
       {changelog.map((entry, index) => (
         <div
           key={entry.version}
-          className="mb-20 bg-white dark:bg-gray-900 rounded-lg p-6 shadow-sm"
+          className="mb-20 rounded-lg p-8 bg-white border border-stone-200 shadow-[4px_4px_0px_0px_rgba(120,113,108,0.15)]"
         >
           <div className="flex items-center gap-4 mb-6">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            <h2 className="font-mono text-3xl font-bold text-stone-800">
               {entry.version}
             </h2>
-            <span className="text-gray-500 dark:text-gray-400">
-              {entry.date}
-            </span>
+            <span className="font-serif text-stone-600">{entry.date}</span>
           </div>
 
           <div className="flex items-center gap-2 mb-4">
-            <h3 className="text-2xl font-semibold bg-gradient-to-r from-blue-500 to-violet-500 bg-clip-text text-transparent">
+            <h3 className="font-serif text-2xl font-semibold text-stone-700">
               {entry.title}
             </h3>
             <span className="text-2xl">{entry.emoji}</span>
             {index === 0 && (
-              <span className="ml-auto px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded-full text-sm">
+              <span className="ml-auto px-3 py-1 bg-stone-100 text-stone-600 rounded-full text-sm font-mono">
                 Latest
               </span>
             )}
           </div>
 
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
-            {entry.description}
-          </p>
+          <p className="font-serif text-stone-600 mb-8">{entry.description}</p>
 
           <div className="grid md:grid-cols-2 gap-8">
             {Object.entries(entry.categories).map(([category, items]) => (
               <div key={category} className="space-y-4">
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                <h4 className="font-serif text-xl font-semibold text-stone-700 mb-4">
                   {category}
                 </h4>
                 <ul className="space-y-3">
                   {items.map((item) => (
                     <li key={item} className="flex items-center gap-2">
-                      <span className="text-green-500">✓</span>
-                      <span className="text-gray-600 dark:text-gray-400">
-                        {item}
-                      </span>
+                      <span className="text-stone-400">•</span>
+                      <span className="font-serif text-stone-600">{item}</span>
                     </li>
                   ))}
                 </ul>

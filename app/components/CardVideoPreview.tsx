@@ -66,11 +66,11 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
           <div className="flex flex-col justify-center w-full space-y-6">
             <div>
               <h2
-                className={`${crimsonPro.className} text-2xl text-amber-950 mb-2`}
+                className={`text-2xl text-amber-950 mb-2`}
               >
                 Download Options
               </h2>
-              <p className={`${inter.className} text-amber-800/90 text-sm`}>
+              <p className={`text-amber-800/90 text-sm`}>
                 Choose your preferred video quality
               </p>
             </div>

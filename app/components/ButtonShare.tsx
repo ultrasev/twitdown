@@ -1,8 +1,8 @@
 import { FaTwitter, FaFacebook } from "react-icons/fa";
 import ButtonShareClient from "@/app/components/ButtonShareClient";
-import { Playfair_Display } from 'next/font/google';
+import { Playfair_Display } from "next/font/google";
 
-const playfair = Playfair_Display({ subsets: ['latin'] });
+const playfair = Playfair_Display({ subsets: ["latin"] });
 
 // Move share URL generation to server component
 function getShareUrl(platform: string, url: string): string {
@@ -23,12 +23,12 @@ function getShareUrl(platform: string, url: string): string {
 function ButtonShare({ url }: { url: string }) {
   return (
     <div className="flex items-center justify-center gap-3">
-      <span className={`${playfair.className} text-amber-900/90 tracking-wide`}>
-        Share with friends:
+      <span className={`text-amber-900/90 tracking-wide`}>
+        Share this site with friends:
       </span>
       {[
-        { platform: "twitter", icon: <FaTwitter className="w-5 h-5" /> },
-        { platform: "facebook", icon: <FaFacebook className="w-5 h-5" /> },
+        { platform: "twitter", icon: <FaTwitter className="w-6 h-6" /> },
+        { platform: "facebook", icon: <FaFacebook className="w-6 h-6" /> },
       ].map(({ platform, icon }) => (
         <ButtonShareClient
           key={platform}

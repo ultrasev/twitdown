@@ -1,15 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Crimson_Pro, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import CardVideoPreview from "@/app/components/CardVideoPreview";
 import { http } from "@/lib/http";
 
-const crimsonPro = Crimson_Pro({
-  subsets: ["latin"],
-  weight: ["500", "600"],
-  style: ["normal"],
-});
 const inter = Inter({ subsets: ["latin"] });
 
 interface VideoData {
@@ -64,19 +59,27 @@ export default function DownloaderForm() {
   return (
     <div className="mt-8 mx-auto text-center">
       <div className="max-w-3xl mx-auto">
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 p-8
+          bg-white/30 backdrop-blur-lg rounded-3xl
+          shadow-[0_8px_30px_rgb(0,0,0,0.04)]
+          border border-amber-100/50"
+        >
           <div className="relative">
             <input
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="Paste Twitter/X video URL here"
-              className={`${inter.className} w-full px-6 py-4 rounded-lg
-                bg-white/80 backdrop-blur-sm
-                border border-amber-200
-                text-amber-900 placeholder-amber-400
-                focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400
-                transition-colors duration-200`}
+              className={`${inter.className} w-full px-6 py-4
+                bg-white/60 backdrop-blur-sm
+                border border-amber-100
+                rounded
+                text-amber-900 placeholder-amber-400/70
+                focus:outline-none focus:ring-2 focus:ring-amber-200/50
+                transition-all duration-300 ease-in-out
+                shadow-[0_2px_15px_rgb(0,0,0,0.03)]`}
               disabled={isLoading}
             />
             <button
@@ -84,7 +87,9 @@ export default function DownloaderForm() {
               onClick={() =>
                 navigator.clipboard.readText().then((text) => setUrl(text))
               }
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-amber-400 hover:text-amber-600 transition-colors duration-200"
+              className="absolute right-4 top-1/2 -translate-y-1/2
+                       text-amber-400 hover:text-amber-600
+                       transition-colors duration-200"
               disabled={isLoading}
             >
               <ClipboardIcon />
@@ -94,13 +99,16 @@ export default function DownloaderForm() {
           <button
             type="submit"
             disabled={isLoading || !url}
-            className={`w-full py-2
-              bg-amber-100 hover:bg-amber-200
-              border border-amber-200
-              text-amber-900 text-lg tracking-wide
+            className={`w-full py-3 px-6
+              bg-gradient-to-r from-amber-400/90 to-amber-500/90
+              hover:from-amber-400 hover:to-amber-500
+              backdrop-blur-sm
+              text-white font-medium tracking-wide
+              rounded
               disabled:opacity-50 disabled:cursor-not-allowed
-              transition-colors duration-200
-              rounded`}
+              transition-all duration-300 ease-in-out
+              shadow-[0_4px_20px_rgb(251,191,36,0.2)]
+              border border-white/20`}
           >
             {isLoading ? (
               <span className="inline-flex items-center">
@@ -119,12 +127,7 @@ export default function DownloaderForm() {
         </form>
       </div>
 
-      {error && (
-        <p className={`${crimsonPro.className} text-red-500 mt-8 text-lg`}>
-          {error}
-        </p>
-      )}
-
+      {error && <p className={`text-red-500 mt-8 text-lg`}>{error}</p>}
       {videoData && <CardVideoPreview data={videoData} />}
     </div>
   );

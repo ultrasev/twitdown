@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import DownloaderForm from "@/app/components/DownloaderForm";
 import ButtonShare from "./ButtonShare";
 import { DM_Serif_Display, Playfair_Display } from "next/font/google";
-
+import { comfortaa } from "@/components/Font";
 // Initialize the fonts
 const dmSerif = DM_Serif_Display({ weight: "400", subsets: ["latin"] });
 const playfair = Playfair_Display({
@@ -37,7 +37,7 @@ export default function SectionDownloader() {
           ].map((feature) => (
             <span
               key={feature}
-              className={`${playfair.className} px-6 py-3 bg-white/80 text-amber-900
+              className={`px-6 py-3 bg-white/80 text-amber-900
                              border border-amber-200 uppercase tracking-wider font-medium
                              shadow-sm backdrop-blur-sm hover:bg-amber-100 transition-colors
                              duration-200`}
@@ -52,7 +52,7 @@ export default function SectionDownloader() {
         >
           Save any Twitter/X video in original quality
           <span
-            className={`${playfair.className} block mt-1 text-base sm:text-lg font-normal`}
+            className={`${comfortaa.className} block mt-1 text-base sm:text-lg font-normal`}
           >
             No fuss, no sign-ups, just elegant simplicity.
           </span>

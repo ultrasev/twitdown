@@ -53,7 +53,6 @@ cp "$output_dir/apple-touch-icon-120x120-precomposed.png" "$public_dir/apple-tou
 
 
 # favicon.ico 要放到 app/ 目录下
-convert "$roundedImage" -resize 96x96 "app/favicon.ico"
 convert "$roundedImage" -resize 96x96 "public/icons/favicon.ico"
 rm "$public_dir/favicon.ico"
 

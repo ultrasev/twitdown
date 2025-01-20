@@ -1,33 +1,195 @@
+import Image from "next/image";
+import Link from "next/link";
+
 export const metadata = {
-  title: "Tech Stack - TwitDown Blog",
-  description: "Deep dive into TwitDown technical architecture",
+  title: "Tech Stack - TwitDown.com",
+  description:
+    "Documentation for TwitDown.com, an advanced Twitter video downloader. Download Twitter videos effortlessly with TwitDown.com",
+  keywords:
+    "twitter video downloader, download twitter videos, twitter video saver, social media tools",
+  openGraph: {
+    title: "Tech Stack - TwitDown.com",
+    description: "Tech Stack for TwitDown.com",
+    type: "article",
+    url: "https://twitdown.com/blog/techstack",
+  },
 };
 
-# TwitDown Technical Stack
+# About TwitDown
 
-## Frontend Architecture
+[TwitDown](https://twitdown.com) was developed to streamline the process of downloading Twitter videos.
 
-Our frontend is built with Next.js 14, leveraging the power of React Server Components and the App Router. Here's why we chose these technologies:
+At its core, it's an intuitive interface built on top of a sophisticated video parsing API (to avoid abuse, the API is not explicitly documented in the source code). Users simply input a tweet URL to receive the video download link.
 
-- **Next.js App Router**: Provides superior routing and data fetching capabilities
-- **React Server Components**: Reduces client-side JavaScript
-- **Tailwind CSS**: Enables rapid UI development with utility classes
+To optimize API utilization and enhance performance, parsed video URLs are cached in our database. Subsequent requests for the same video are served directly from this cache, significantly reducing response times.
 
-![Next.js](/og-image.png)
+<Image
+  src="/images/docs/chartflow.png"
+  alt="TwitDown system architecture diagram"
+  width={800}
+  height={300}
+  className="rounded-xl overflow-hidden shadow-2xl mb-12"
+  priority
+/>
 
-## Backend Services
+## Technology Stack
 
-We use a combination of serverless technologies:
+<ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none pl-0">
+  {[
+    { label: "Frontend", value: "Next.js (React-based framework)" },
+    {
+      label: "Backend",
+      value: "Hono (Lightweight web framework)",
+      link: "https://hono.dev/",
+    },
+    {
+      label: "Database",
+      value: "PostgreSQL (Relational database)",
+      link: "https://www.postgresql.org/",
+    },
+    {
+      label: "Deployment",
+      value: "Vercel (Cloud platform for static and serverless deployment)",
+      link: "https://vercel.com/",
+    },
+    {
+      label: "Video parse API",
+      value: "Twitter API",
+      link: "https://developer.twitter.com/en/docs/twitter-api",
+    },
+    {
+      label: "Analytics",
+      value: "Umami (Privacy-focused analytics)",
+      link: "https://umami.is/",
+    },
+    {
+      label: "Rate limiter",
+      value: "Upstash (Serverless Redis service)",
+      link: "https://upstash.com/",
+    },
+  ].map(({ label, value, link }) => (
+    <li
+      key={label}
+      className="flex items-center p-4 rounded-lg bg-white shadow-sm border-b border-amber-100"
+    >
+      <span className="font-medium text-gray-600 mr-2">{label}:</span>
+      {link ? (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-700 transition-colors duration-200"
+        >
+          {value}
+        </a>
+      ) : (
+        <span>{value}</span>
+      )}
+    </li>
+  ))}
+</ul>
 
-- **Hono**: Lightweight, type-safe backend framework
-- **Upstash Redis**: For rate limiting and caching
-- **PostgreSQL**: For persistent storage
+## Why Hono?
 
-## Performance Optimizations
+The project initially utilized Next.js API routes but transitioned to Hono due to its simplicity and elegance:
 
-Our application achieves excellent performance metrics through:
+- Familiar paradigm for FastAPI developers - enabling a seamless transition
+- Built-in middleware configuration - offering out-of-the-box functionality
+- Intuitive and clean routing system
+- Simplified implementation of authentication, rate limiting, and other middleware functions
 
-- Server-side rendering
-- Aggressive caching strategies
-- Image optimization
-- Code splitting
+For instance, implementing authentication for `/api/v1/download` is remarkably straightforward with Hono. Here's an illustrative example:
+
+```javascript
+import { Hono } from "hono";
+import { handle } from "hono/vercel";
+import { setupMiddleware } from "../middleware";
+import { ApiService } from "../services/api-service";
+
+const app = new Hono().basePath("/api");
+// Middleware configuration
+setupMiddleware(app);
+
+// Public endpoints
+app.get("/hello", (c) => c.json({ message: "Hello, World!" }));
+
+// Protected endpoints
+app.get("/analytics", ApiService.handleAnalytics);
+app.post("/twitter/parse", ApiService.handleTwitterParse);
+
+export const GET = handle(app);
+export const POST = handle(app);
+```
+
+In contrast, Next.js API routes require more extensive setup for
+middleware:
+
+- Necessity for a separate middleware.ts file
+- Custom middleware implementation requirements
+- Additional configuration steps in middleware.ts
+
+Next.js Middleware Configuration
+
+```typescript
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { checkAuth } from "@/lib/middleware/auth";
+import { checkRateLimit } from "@/lib/middleware/rate-limit";
+
+export async function middleware(request: NextRequest) {
+  if (request.nextUrl.pathname.startsWith("/api/public")) {
+    return NextResponse.next();
+  }
+
+  // 1. Authentication verification
+  const authError = await checkAuth(request);
+  if (authError) return authError;
+
+  // 2. Rate limit check for API routes
+  if (request.nextUrl.pathname.startsWith("/api")) {
+    const rateLimitError = await checkRateLimit(request);
+    if (rateLimitError) return rateLimitError;
+  }
+
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: "/api/:path*",
+};
+```
+
+This comparison is not to suggest that Hono is inherently superior
+to Next.js; rather, its design philosophy aligns more closely with
+the project&apos;s requirements, offering enhanced code readability
+and maintainability.
+
+The TwitDown project is open-source and available on GitHub [ultrasev/twitdown](https://github.com/ultrasev/twitdown)
+
+# Search Engine Optimization Strategy
+
+Beyond creating a functional tool for video downloads, this
+project serves as a practical testbed for implementing advanced
+SEO techniques.
+
+While developing a website is relatively straightforward,
+achieving high search engine rankings requires meticulous
+implementation of SEO techniques.
+
+Leveraging AI-assisted tools like Cursor, numerous optimizations
+were implemented, including metadata refinement, robots.txt
+configuration, and sitemap.xml generation. Post-launch analysis
+using AITDK revealed promising results, confirming proper
+implementation of titles, descriptions, keywords, OpenGraph
+metadata, and Twitter cards.
+
+Additional SEO strategies employed include structured data markup,
+internal link optimization, and targeted keyword research. These
+efforts have shown initial positive impacts on search engine
+rankings.
+
+# Future Enhancements
+
+- UI design optimization: While AI tools like Cursor provide valuable suggestions, there&apos;s significant potential for human-driven improvements based on user feedback and usability studies.
+- Continued SEO refinement: Plans include strategic promotion on platforms like Twitter and Reddit to boost visibility. Ongoing experimentation with keyword optimization and content descriptions is underway to maximize organic reach.
+- Performance optimization: Continuous monitoring and improvement of page load times, server response speeds, and overall application performance.

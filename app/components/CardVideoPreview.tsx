@@ -13,46 +13,23 @@ interface VideoPreviewProps {
   };
 }
 
-// Helper function to format resolution
-function formatResolution(resolution: string): string {
-  // Extract the numeric value from resolution string (e.g., "1280p" -> "720p")
-  const height = resolution.match(/\d+/)?.[0];
-  if (!height) return resolution;
-
-  // Map common vertical resolutions to standard formats
-  const resolutionMap: Record<string, string> = {
-    "1280": "720p",
-    "852": "480p",
-    "568": "360p",
-  };
-
-  return resolutionMap[height] || `${height}p`;
-}
-
-// Helper function to handle video downloads
-async function handleVideoDownload(videoUrl: string, resolution: string) {
-  try {
-    const response = await fetch(videoUrl);
-    const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-
-    // Extract clean filename by removing URL parameters
-    const x = (
-      videoUrl.split(/[?#&]/)[0].split("/").pop() || "video.mp4"
-    ).split(".")[0];
-    link.setAttribute("download", `${x}-${resolution}.mp4`);
-    document.body.appendChild(link);
-    link.click();
-    link.parentNode?.removeChild(link);
-    window.URL.revokeObjectURL(url);
-  } catch (error) {
-    console.error("Download failed:", error);
-  }
-}
-
 export default function CardVideoPreview({ data }: VideoPreviewProps) {
+  // Helper function to format resolution
+  function formatResolution(resolution: string): string {
+    // Extract the numeric value from resolution string (e.g., "1280p" -> "720p")
+    const height = resolution.match(/\d+/)?.[0];
+    if (!height) return resolution;
+
+    // Map common vertical resolutions to standard formats
+    const resolutionMap: Record<string, string> = {
+      "1280": "720p",
+      "852": "480p",
+      "568": "360p",
+    };
+
+    return resolutionMap[height] || `${height}p`;
+  }
+
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8">
       <div className="mt-8 max-w-4xl mx-auto">
@@ -90,9 +67,11 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
 
             <div className="space-y-3">
               {data.resolutions.map((res, index) => (
-                <button
+                <a
+                  target="_blank"
                   key={index}
-                  onClick={() => handleVideoDownload(res.url, res.resolution)}
+                  href={res.url}
+                  download
                   className={`group flex items-center justify-between w-full px-4 py-3
                              bg-amber-100 hover:bg-amber-200
                              border border-amber-200
@@ -111,7 +90,7 @@ export default function CardVideoPreview({ data }: VideoPreviewProps) {
                     </span>
                     <ArrowIcon />
                   </div>
-                </button>
+                </a>
               ))}
             </div>
           </div>

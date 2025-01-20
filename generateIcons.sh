@@ -36,6 +36,10 @@ convert "$roundedImage" -resize 16x16 "$output_dir/favicon-16x16.png"
 convert "$roundedImage" -resize 32x32 "$output_dir/favicon-32x32.png"
 convert "$roundedImage" -resize 48x48 "$output_dir/favicon-48x48.png"
 convert "$roundedImage" -resize 96x96 "$output_dir/favicon-96x96.png"
+convert "$roundedImage" -resize 512x512 "$output_dir/favicon-512x512.png"
+convert "$roundedImage" -resize 192x192 "$output_dir/favicon-192x192.png"
+
+
 
 # 四合一
 convert "$output_dir/favicon-16x16.png" "$output_dir/favicon-32x32.png"  \

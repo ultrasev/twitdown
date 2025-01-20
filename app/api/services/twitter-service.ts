@@ -1,6 +1,7 @@
 import { db, sql } from "@/lib/db";
 import { twitterCache, TwitterVideoData } from "@/lib/db/schema";
 import { eq, desc, asc } from "drizzle-orm";
+import { getAdjustedDate } from "@/lib/utils/date-utils";
 // Modified interface to include priority
 const NEW_API_URL = process.env.NEW_API_URL;
 const NEW_API_KEY = process.env.NEW_API_KEY;
@@ -77,11 +78,12 @@ export const TwitterService = {
 
   // Update analytics for cached data
   async updateAnalytics(statusId: string) {
+    console.log("updating analytics", getAdjustedDate());
     return db
       .update(twitterCache)
       .set({
         viewCount: sql`${twitterCache.viewCount} + 1`,
-        lastAccessedAt: new Date(),
+        lastAccessedAt: getAdjustedDate(),
       })
       .where(eq(twitterCache.statusId, statusId));
   },
@@ -108,6 +110,7 @@ export const TwitterService = {
 
   // Modified cacheVideoData to use upsert
   async cacheVideoData(statusId: string, data: TwitterVideoData) {
+    const now = getAdjustedDate();
     await db
       .insert(twitterCache)
       .values({
@@ -117,7 +120,7 @@ export const TwitterService = {
         text: data.text,
         resolutions: JSON.stringify(data.resolutions),
         viewCount: 1,
-        lastAccessedAt: new Date(),
+        lastAccessedAt: now,
       })
       .onConflictDoUpdate({
         target: twitterCache.statusId,
@@ -126,8 +129,8 @@ export const TwitterService = {
           thumbnail: data.thumbnail,
           text: data.text,
           resolutions: JSON.stringify(data.resolutions),
-          lastAccessedAt: new Date(),
-          updatedAt: new Date(),
+          lastAccessedAt: now,
+          updatedAt: now,
         },
       });
   },

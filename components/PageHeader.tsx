@@ -21,14 +21,14 @@ export default function PageHeader() {
               <span className={`${berkshire.className} text-lg`}>About</span>
             </Link>
 
-            <Link
+            {/* <Link
               href="/changelog"
               className="text-amber-800 hover:text-amber-950 transition-colors duration-200"
             >
               <span className={`${berkshire.className} text-lg`}>
                 Changelog
               </span>
-            </Link>
+            </Link> */}
           </nav>
         </div>
       </div>

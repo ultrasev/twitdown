@@ -1,5 +1,20 @@
+import createMDX from "@next/mdx";
+import rehypeHighlight from "rehype-highlight";
+import rehypeSlug from "rehype-slug";
+import type { NextConfig } from "next";
+import type { RemotePattern } from "next/dist/shared/lib/image-config";
+
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [rehypeSlug, rehypeHighlight],
+  },
+});
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   images: {
     remotePatterns: [
       {
@@ -12,8 +27,8 @@ const nextConfig = {
         hostname: "video.twimg.com",
         pathname: "/ext_tw_video/**",
       },
-    ],
+    ] as RemotePattern[],
   },
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);

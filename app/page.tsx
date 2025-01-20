@@ -59,7 +59,15 @@ const faqs = [
   },
 ];
 
-export default function Home() {
+// Add type for search params
+interface HomeProps {
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default function Home({ searchParams }: HomeProps) {
+  // Extract URL from search params if present
+  const twitterUrl = searchParams.url as string | undefined;
+
   return (
     <main className="flex-1">
       <script
@@ -68,7 +76,7 @@ export default function Home() {
       />
 
       <div className="container mx-auto">
-        <SectionDownloader />
+        <SectionDownloader initialUrl={twitterUrl} />
         <ContentSection
           howToSteps={howToSteps}
           features={features}

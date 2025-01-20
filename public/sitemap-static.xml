@@ -16,18 +16,18 @@
     <loc>https://twitdown.com/privacy</loc>
     <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://twitdown.com/terms</loc>
     <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://twitdown.com/changelog</loc>
     <lastmod>2025-01-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>

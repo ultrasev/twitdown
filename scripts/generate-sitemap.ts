@@ -9,9 +9,9 @@ const config = {
     static: [
       { loc: "/", priority: 1.0, changefreq: "daily" },
       { loc: "/about", priority: 0.8, changefreq: "monthly" },
-      { loc: "/privacy", priority: 0.8, changefreq: "monthly" },
-      { loc: "/terms", priority: 0.8, changefreq: "monthly" },
-      { loc: "/changelog", priority: 0.8, changefreq: "monthly" },
+      { loc: "/privacy", priority: 0.3, changefreq: "monthly" },
+      { loc: "/terms", priority: 0.3, changefreq: "monthly" },
+      { loc: "/changelog", priority: 0.6, changefreq: "monthly" },
     ],
     blog: [
       { loc: "/blog", priority: 0.6, changefreq: "weekly" },

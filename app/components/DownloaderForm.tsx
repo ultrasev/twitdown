@@ -21,7 +21,7 @@ interface VideoData {
 
 function isValidTwitterUrl(url: string): boolean {
   const twitterUrlPattern =
-    /^https?:\/\/((?:x|twitter)\.com)\/[a-zA-Z0-9_]+\/status\/\d+/;
+    /^https?:\/\/((?:mobile\.|)(?:x|twitter)\.com)\/[a-zA-Z0-9_]+\/status\/\d+/;
   return twitterUrlPattern.test(url);
 }
 
@@ -87,10 +87,12 @@ export default function DownloaderForm() {
                 navigator.clipboard.readText().then((text) => setUrl(text))
               }
               className="absolute right-4 top-1/2 -translate-y-1/2
-                       text-amber-400 hover:text-amber-600
-                       transition-colors duration-200"
+                       transition-colors duration-200
+                       flex items-center gap-1"
               disabled={isLoading}
+              title="Paste from clipboard"
             >
+              <span className="text-sm">Paste</span>
               <ClipboardIcon />
             </button>
           </div>

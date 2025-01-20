@@ -1,33 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://twitdown.com</loc>
-    <lastmod>2024-03-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://twitdown.com/privacy</loc>
-    <lastmod>2024-03-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://twitdown.com/terms</loc>
-    <lastmod>2024-03-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://twitdown.com/changelog</loc>
-    <lastmod>2024-03-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://twitdown.com/about</loc>
-    <lastmod>2024-03-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://twitdown.com/sitemap-static.xml</loc>
+    <lastmod>2025-01-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://twitdown.com/sitemap-blog.xml</loc>
+    <lastmod>2025-01-20</lastmod>
+  </sitemap>
+</sitemapindex>

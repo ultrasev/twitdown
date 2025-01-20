@@ -57,6 +57,7 @@ export const metadata: Metadata = {
     description:
       "Download Twitter/X videos in HD quality for free. No registration required.",
     images: ["https://twitdown.com/og-image.png"],
+    site: "@ultrasev",
   },
   alternates: {
     canonical: "https://twitdown.com",

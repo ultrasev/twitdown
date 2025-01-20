@@ -29,12 +29,12 @@ export const metadata: Metadata = {
     "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
   keywords: [
     "twitter video download",
-    "free twitter video",
     "tweetdown",
     "twitdown",
     "twitdown.com",
     "推特视频下载",
     "twitter视频",
+    "tweet download"
   ],
   authors: [{ name: "@ultrasev" }],
   openGraph: {

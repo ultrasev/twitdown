@@ -1,11 +1,5 @@
 import React from "react";
 
-interface ContentSectionProps {
-  howToSteps: string[];
-  features: string[];
-  faqs: { q: string; a: string }[];
-}
-
 const howToSteps = [
   "Copy the Twitter/X video URL you want to download",
   "Paste the URL in the input box above",

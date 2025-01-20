@@ -86,8 +86,19 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <link rel="icon" href="/icons/favicon-32x32.png" sizes="any" />
-        <link rel="icon" href="/icons/favicon-32x32.png" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+          rel="icon"
+          href="/icons/favicon-16x16.png"
+          sizes="16x16"
+          type="image/png"
+        />
+        <link
+          rel="icon"
+          href="/icons/favicon-32x32.png"
+          sizes="32x32"
+          type="image/png"
+        />
         <link rel="apple-touch-icon" href="/icons/apple-icon-180x180.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Inter } from "next/font/google";
 import CardVideoPreview from "@/app/components/CardVideoPreview";
 import { http } from "@/lib/http";
@@ -25,25 +25,13 @@ function isValidTwitterUrl(url: string): boolean {
   return twitterUrlPattern.test(url);
 }
 
-interface DownloaderFormProps {
-  initialUrl?: string;
-}
-
-export default function DownloaderForm({ initialUrl }: DownloaderFormProps) {
-  const [url, setUrl] = useState(initialUrl || "");
+export default function DownloaderForm() {
+  const [url, setUrl] = useState("");
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    if (initialUrl && isValidTwitterUrl(initialUrl)) {
-      const fakeEvent = { preventDefault: () => {} } as React.FormEvent;
-      handleSubmit(fakeEvent);
-    }
-  }, [initialUrl]);
-
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
     e.preventDefault();
 
     if (!isValidTwitterUrl(url)) {

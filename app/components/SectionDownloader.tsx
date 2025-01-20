@@ -10,11 +10,7 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
 });
 
-interface SectionDownloaderProps {
-  initialUrl?: string;
-}
-
-export default function SectionDownloader({ initialUrl }: SectionDownloaderProps) {
+export default function SectionDownloader() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4 bg-gradient-to-b from-amber-50/50 to-transparent">
       <div className="w-full max-w-4xl mx-auto space-y-12 text-center">
@@ -67,7 +63,7 @@ export default function SectionDownloader({ initialUrl }: SectionDownloaderProps
             <div className="text-amber-700 animate-pulse">Loading...</div>
           }
         >
-          <DownloaderForm initialUrl={initialUrl} />
+          <DownloaderForm />
         </Suspense>
 
         <ButtonShare url="https://twitdown.com" />

@@ -33,9 +33,10 @@ export const metadata: Metadata = {
     "tweetdown",
     "twitdown",
     "twitdown.com",
-    "download twitter video",
+    "推特视频下载",
+    "twitter视频",
   ],
-  authors: [{ name: "@twitdown" }],
+  authors: [{ name: "@ultrasev" }],
   openGraph: {
     type: "website",
     url: "https://twitdown.com",

@@ -14,35 +14,35 @@ const howToSteps = [
   "Download your video",
 ];
 
-const features = [
-  "Free to use - no registration required",
-  "High-quality video downloads",
-  "Mobile-friendly interface",
-  "Fast and easy to use",
-  "Works with all Twitter/X videos",
-  "Multiple format options",
-];
+// const features = [
+//   "Free to use - no registration required",
+//   "High-quality video downloads",
+//   "Mobile-friendly interface",
+//   "Fast and easy to use",
+//   "Works with all Twitter/X videos",
+//   "Multiple format options",
+// ];
 
 export default function ContentSection() {
   const faqs = [
     {
-      q: "Can I download private videos from Twitter?",
+      q: "Can I download videos from private accounts?",
       a: "No. For privacy and security reasons, our service only works with public Twitter/X videos. We respect user privacy and copyright laws.",
     },
     {
-      q: "How to download Twitter videos on iPhone?",
+      q: "Is there a limit on downloads?",
+      a: "To ensure fair usage and optimal service performance, there's a rate limit of 10 downloads per 10 seconds. This helps us maintain service quality and availability for all users.",
+    },
+    {
+      q: "How to download X/Twitter videos on iPhone?",
       a: "It's simple! Copy the tweet URL from Twitter app, paste it in our downloader, and click Download. For iOS 13+, downloads work directly in Safari. For older iOS versions, you'll need to use a file manager app.",
     },
     {
-      q: "Are there any download limits?",
-      a: "No limits on the number of downloads! However, there's a brief 10-second cooldown between downloads to ensure optimal service performance for all users.",
-    },
-    {
-      q: "How to download Twitter videos on Android?",
+      q: "How to download X/Twitter videos on Android?",
       a: "The process is straightforward: copy the tweet URL, paste it in our downloader, and tap Download. The video will be saved to your device's storage automatically.",
     },
     {
-      q: "What video formats are supported?",
+      q: "What about video quality and formats?",
       a: "Our service supports downloading videos in MP4 format, which is compatible with all modern devices and platforms. You can choose between different quality options when available.",
     },
   ];

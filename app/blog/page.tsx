@@ -3,22 +3,16 @@ import Link from "next/link";
 const posts = [
   {
     slug: "techstack",
-    title: "TwitDown Technical Stack",
+    title: "Technical Stack",
     description: "Deep dive into our technical architecture and decisions",
-    date: "2024-01-15",
-  },
-  {
-    slug: "about",
-    title: "About TwitDown",
-    description: "The story behind TwitDown development",
-    date: "2024-01-10",
+    date: "2025-01-19",
   },
 ];
 
 export default function BlogIndex() {
   return (
     <div className="max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold mb-12 text-amber-900">TwitDown Blog</h1>
+      <h1 className="text-4xl font-bold mb-12 text-amber-900">Blog</h1>
 
       <div className="space-y-8">
         {posts.map((post) => (

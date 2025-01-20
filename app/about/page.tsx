@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "About TwitDown - Twitter Video Downloader",
     description: "Simple and efficient Twitter video downloader",
     type: "article",
-    url: "https://twitdown.com/about",
+    url: "https://www.twitdown.com/about",
   },
 };
 

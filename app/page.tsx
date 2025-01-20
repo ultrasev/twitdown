@@ -17,7 +17,7 @@ const jsonLd = {
   description: "Free online tool to download Twitter/X videos in HD quality",
   browserRequirements: "Requires JavaScript",
   permissions: "No special permissions required",
-  url: "https://twitdown.com",
+  url: "https://www.twitdown.com",
   author: {
     "@type": "Organization",
     name: "TwitDown",

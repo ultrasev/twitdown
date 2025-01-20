@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://twitdown.com/sitemap-static.xml</loc>
-    <lastmod>2025-01-20</lastmod>
+    <loc>https://www.twitdown.com/sitemap-static.xml</loc>
+    <lastmod>2025-01-21</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://twitdown.com/sitemap-blog.xml</loc>
-    <lastmod>2025-01-20</lastmod>
+    <loc>https://www.twitdown.com/sitemap-blog.xml</loc>
+    <lastmod>2025-01-21</lastmod>
   </sitemap>
 </sitemapindex>

@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://twitdown.com/sitemap.xml
+Sitemap: https://www.twitdown.com/sitemap.xml

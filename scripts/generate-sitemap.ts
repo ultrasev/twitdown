@@ -4,7 +4,7 @@ import { format } from "date-fns";
 
 // 配置
 const config = {
-  baseUrl: "https://twitdown.com",
+  baseUrl: "https://www.twitdown.com",
   sitemaps: {
     static: [
       { loc: "/", priority: 1.0, changefreq: "daily" },

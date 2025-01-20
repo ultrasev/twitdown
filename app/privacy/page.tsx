@@ -6,7 +6,7 @@ const jsonLd = {
   "publisher": {
     "@type": "Organization",
     "name": "TwitDown",
-    "url": "https://twitdown.com"
+    "url": "https://www.twitdown.com"
   }
 };
 

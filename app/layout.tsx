@@ -39,13 +39,13 @@ export const metadata: Metadata = {
   authors: [{ name: "@ultrasev" }],
   openGraph: {
     type: "website",
-    url: "https://twitdown.com",
+    url: "https://www.twitdown.com",
     title: "TwitDown - Download Twitter Videos Free",
     description:
       "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
     images: [
       {
-        url: "https://twitdown.com/og-image.png",
+        url: "https://www.twitdown.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "TwitDown - Download Twitter Videos Free",
@@ -57,11 +57,11 @@ export const metadata: Metadata = {
     title: "TwitDown - Download Twitter Videos Free",
     description:
       "Download Twitter/X videos in HD quality for free. No registration required.",
-    images: ["https://twitdown.com/og-image.png"],
+    images: ["https://www.twitdown.com/og-image.png"],
     site: "@ultrasev",
   },
   alternates: {
-    canonical: "https://twitdown.com",
+    canonical: "https://www.twitdown.com",
   },
   robots: {
     index: true,

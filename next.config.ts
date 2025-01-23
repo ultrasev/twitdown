@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "pbs.twimg.com",
-        pathname: "/ext_tw_video_thumb/**",
+        pathname: "/*/**",
       },
       {
         protocol: "https",

@@ -24,7 +24,7 @@ const jsonLd = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.twitdown.com'),
+  metadataBase: new URL("https://www.twitdown.com"),
   title: "TwitDown - Download Twitter Videos Free",
   description:
     "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
@@ -35,9 +35,14 @@ export const metadata: Metadata = {
     "twitdown.com",
     "推特视频下载",
     "twitter视频",
-    "tweet download"
+    "tweet download",
   ],
-  authors: [{ name: "@ultrasev" }],
+  authors: [
+    {
+      name: "@ultrasev",
+      url: "javascript:window.location.href=atob('bWFpbHRvOnN1cHBvcnRAdHdpdGRvd24uY29t')",
+    },
+  ],
   openGraph: {
     type: "website",
     url: "https://www.twitdown.com",
@@ -59,9 +64,11 @@ export const metadata: Metadata = {
     description:
       "Download Twitter/X videos in HD quality for free. No registration required.",
     images: ["https://www.twitdown.com/og-image.png"],
-    site: "@ultrasev",
+    creator: "@ultrasev",
   },
-  canonical: 'https://www.twitdown.com',
+  alternates: {
+    canonical: "https://www.twitdown.com",
+  },
   robots: {
     index: true,
     follow: true,

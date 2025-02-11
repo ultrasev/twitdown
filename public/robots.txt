@@ -1,3 +1,20 @@
+# Global rules
 User-agent: *
 Allow: /
+
+# Disallow CDN and system paths
+Disallow: /cdn-cgi/
+Disallow: /email-protection
+Disallow: /_next/static/
+Disallow: /api/
+
+# Allow static assets
+Allow: /images/
+Allow: /assets/
+Allow: /favicon.ico
+
+# Crawl delay to prevent server overload
+Crawl-delay: 5
+
+# Sitemap declaration
 Sitemap: https://www.twitdown.com/sitemap.xml

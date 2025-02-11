@@ -24,6 +24,7 @@ const jsonLd = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.twitdown.com'),
   title: "TwitDown - Download Twitter Videos Free",
   description:
     "Free online Twitter video downloader. Download X/Twitter videos in HD quality. No login required, supports multiple video formats and resolutions.",
@@ -60,9 +61,7 @@ export const metadata: Metadata = {
     images: ["https://www.twitdown.com/og-image.png"],
     site: "@ultrasev",
   },
-  alternates: {
-    canonical: "https://www.twitdown.com",
-  },
+  canonical: 'https://www.twitdown.com',
   robots: {
     index: true,
     follow: true,

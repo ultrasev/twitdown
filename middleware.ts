@@ -2,12 +2,17 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-  // 检查是否是 HTTP 请求
-  if (request.headers.get("x-forwarded-proto") !== "https") {
-    // 对于 HTTP 请求，返回 200 OK
-    return new NextResponse("OK", { status: 200 });
+  // Check if the request protocol is HTTP
+  if (process.env.NODE_ENV === 'production' && !request.headers.get('x-forwarded-proto')?.includes('https')) {
+    // Get the original URL and create HTTPS version
+    const url = request.nextUrl.clone();
+    url.protocol = 'https:';
+    url.href = url.href.replace('http://', 'https://');
+
+    // Return 301 permanent redirect
+    return NextResponse.redirect(url, 301);
   }
-  // 对于其他请求，不做任何处理
+
   return NextResponse.next();
 }
 

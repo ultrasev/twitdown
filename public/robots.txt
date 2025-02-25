@@ -5,7 +5,6 @@ Allow: /
 # Disallow CDN and system paths
 Disallow: /cdn-cgi/
 Disallow: /email-protection
-Disallow: /_next/static/
 Disallow: /api/
 
 # Allow static assets

@@ -34,13 +34,12 @@ function ButtonShare({ url }: { url: string }) {
           icon: <FaFacebook className="w-6 h-6 text-[#1877F2]" />,
           color: "text-[#1877F2] hover:text-[#166fe5]", // Facebook brand color
         },
-      ].map(({ platform, icon, color }) => (
+      ].map(({ platform, icon }) => (
         <ButtonShareClient
           key={platform}
           url={getShareUrl(platform, url)}
           icon={icon}
           platform={platform}
-          color={color}
         />
       ))}
     </div>

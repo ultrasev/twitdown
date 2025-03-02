@@ -72,10 +72,10 @@ export default function DownloaderForm() {
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="Paste Twitter/X video URL here"
-              className={`${inter.className} w-full px-6 py-4
+              className={`${inter.className} w-full px-6 py-3
                 bg-white/60 backdrop-blur-sm
-                border border-amber-100
-                rounded
+                border border-amber-300
+                rounded-lg
                 focus:outline-none focus:ring-2 focus:ring-amber-200/50
                 transition-all duration-300 ease-in-out
                 shadow-[0_2px_15px_rgb(0,0,0,0.03)]`}

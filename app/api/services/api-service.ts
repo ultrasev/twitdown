@@ -1,5 +1,8 @@
 import { Context } from "hono";
 import { TwitterService } from "./twitter-service";
+import { Logger } from "tslog";
+
+const logger = new Logger({ name: "api-service" });
 
 export const ApiService = {
   // Handle analytics request
@@ -8,7 +11,7 @@ export const ApiService = {
       const videos = await TwitterService.getAnalytics();
       return c.json({ videos });
     } catch (error) {
-      console.error("Failed to fetch analytics:", error);
+      logger.error("Failed to fetch analytics:", error);
       return c.json({ error: "Failed to fetch analytics" }, 500);
     }
   },
@@ -29,13 +32,15 @@ export const ApiService = {
 
       const cachedData = await TwitterService.getCachedData(statusId);
       if (cachedData) {
+        logger.info("Returning cached data for statusId:", statusId);
         return c.json(cachedData);
       }
 
       const data = await TwitterService.fetchAndCache(url, statusId);
+      logger.info("Returning new data for statusId:", statusId);
       return c.json(data);
     } catch (error) {
-      console.error("Error parsing Twitter video:", error);
+      logger.error("Error parsing Twitter video:", error);
       return c.json({ error: "Failed to parse Twitter video" }, 500);
     }
   },

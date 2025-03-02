@@ -1,14 +1,10 @@
 import { Suspense } from "react";
 import DownloaderForm from "@/app/components/DownloaderForm";
 import ButtonShare from "./ButtonShare";
-import { DM_Serif_Display, Playfair_Display } from "next/font/google";
+import { DM_Serif_Display } from "next/font/google";
 
 // Initialize the fonts
 const dmSerif = DM_Serif_Display({ weight: "400", subsets: ["latin"] });
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-});
 
 export default function SectionDownloader() {
   return (

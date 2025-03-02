@@ -24,14 +24,23 @@ function ButtonShare({ url }: { url: string }) {
         Share this site with friends:
       </span>
       {[
-        { platform: "twitter", icon: <FaTwitter className="w-6 h-6" /> },
-        { platform: "facebook", icon: <FaFacebook className="w-6 h-6" /> },
-      ].map(({ platform, icon }) => (
+        {
+          platform: "twitter",
+          icon: <FaTwitter className="w-6 h-6 text-[#1DA1F2]" />,
+          color: "text-[#1DA1F2] hover:text-[#1a8cd8]", // Twitter brand color
+        },
+        {
+          platform: "facebook",
+          icon: <FaFacebook className="w-6 h-6 text-[#1877F2]" />,
+          color: "text-[#1877F2] hover:text-[#166fe5]", // Facebook brand color
+        },
+      ].map(({ platform, icon, color }) => (
         <ButtonShareClient
           key={platform}
           url={getShareUrl(platform, url)}
           icon={icon}
           platform={platform}
+          color={color}
         />
       ))}
     </div>
